@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     [SerializeField, Range(0, 10)] int m_bulletLimit = 0;
     Rigidbody2D m_rb;
 
+    float _Timer;
     void Start()
     {
         m_rb = GetComponent<Rigidbody2D>();
@@ -33,12 +34,18 @@ public class Player : MonoBehaviour
         m_rb.velocity = dir * m_moveSpeed;        // 単位ベクトルにスピードをかけて速度ベクトルにして、それを Rigidbody の速度ベクトルとしてセットする
 
         // 左クリックまたは左 Ctrl で弾を発射する（単発）
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButton("Fire1"))
         {
-            if (m_bulletLimit == 0 || this.GetComponentsInChildren<Bullet>().Length < m_bulletLimit)    // 画面内の弾数を制限する
+            if (_Timer > 0.1f)    // 画面内の弾数を制限する
             {
                 Fire1();
+                _Timer = 0;
             }
+            else
+            {
+                _Timer += Time.deltaTime;
+            }
+            
         }
 
         // 課題: ここに右クリックまたは左 Alt (Fire2) で弾を発射するようコードを追加せよ

@@ -13,6 +13,7 @@ public class UseRotateAround : MonoBehaviour
 
     // ‰~‰^“®ŽüŠú
     [SerializeField] private float _period = 2;
+    [SerializeField] private float _DownSpeed = -1f;
 
     private void Update()
     {
@@ -22,5 +23,6 @@ public class UseRotateAround : MonoBehaviour
             _axis,
             360 / _period * Time.deltaTime
         );
+        transform.Translate(0f, _DownSpeed, 0f);
     }
 }
