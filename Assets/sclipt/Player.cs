@@ -22,7 +22,6 @@ public class Player : MonoBehaviour
     void Start()
     {
         m_rb = GetComponent<Rigidbody2D>();
-        
     }
 
     void Update()
@@ -36,7 +35,7 @@ public class Player : MonoBehaviour
         // 左クリックまたは左 Ctrl で弾を発射する（単発）
         if (Input.GetButton("Fire1"))
         {
-            if (_Timer > 0.1f)    // 画面内の弾数を制限する
+            if (_Timer > 0.15f)    // 画面内の弾数を制限する
             {
                 Fire1();
                 _Timer = 0;
