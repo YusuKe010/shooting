@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
+    //-------‘S•ûˆÊ’e---------------------
     public float angle = 90;
     [SerializeField] float _speed = -5f;
     Vector3 velocity;

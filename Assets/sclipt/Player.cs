@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject m_bulletPrefab = null;
     /// <summary>弾の発射位置</summary>
     [SerializeField] Transform m_muzzle = null;
+    [SerializeField] Transform _Player;
     /// <summary>一画面の最大段数 (0 = 無制限)</summary>
     [SerializeField, Range(0, 10)] int m_bulletLimit = 0;
     Rigidbody2D m_rb;
@@ -33,7 +34,7 @@ public class Player : MonoBehaviour
         m_rb.velocity = dir * m_moveSpeed;        // 単位ベクトルにスピードをかけて速度ベクトルにして、それを Rigidbody の速度ベクトルとしてセットする
 
         // 左クリックまたは左 Ctrl で弾を発射する（単発）
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") )
         {
             if (_Timer > 0.15f)    // 画面内の弾数を制限する
             {
@@ -46,8 +47,7 @@ public class Player : MonoBehaviour
             }
             
         }
-
-        // 課題: ここに右クリックまたは左 Alt (Fire2) で弾を発射するようコードを追加せよ
+        
     }
 
     /// <summary>
