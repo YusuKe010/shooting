@@ -33,7 +33,8 @@ public class Player : MonoBehaviour
         Vector2 dir = new Vector2(h, v).normalized; // 進行方向の単位ベクトルを作る (dir = direction) 
         m_rb.velocity = dir * m_moveSpeed;        // 単位ベクトルにスピードをかけて速度ベクトルにして、それを Rigidbody の速度ベクトルとしてセットする
 
-        // 左クリックまたは左 Ctrl で弾を発射する（単発）
+        // 左クリックまたは左 Ctrl で弾を発
+        // 射する（単発）
         if (Input.GetButton("Fire1") )
         {
             if (_Timer > 0.15f)    // 画面内の弾数を制限する

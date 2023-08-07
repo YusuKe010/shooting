@@ -19,11 +19,6 @@ public class EnemyShot3 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
-
-
-
         //---------‘S•ûˆÊ‰ñ“]’e-----------------------------------
         _Timer[0] += Time.deltaTime;
         if (_Timer[0] < 4.0f)

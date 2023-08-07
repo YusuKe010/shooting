@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3932758300639718887}
   - component: {fileID: 3292398903817689266}
   m_Layer: 0
-  m_Name: 1551460i-removebg-preview
+  m_Name: Bullet2
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
