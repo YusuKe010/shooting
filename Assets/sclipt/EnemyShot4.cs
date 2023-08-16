@@ -7,6 +7,7 @@ public class EnemyShot4 : MonoBehaviour
     [SerializeField] GameObject[] m_bulletPrefab = null;
     [SerializeField] Transform m_muzzle = null;
     [SerializeField] EnemyBullet4 m_bullet;
+    [SerializeField] EnemyBullet4_2 m_bullet4_2;
     [SerializeField] float[] _timer;
     [SerializeField] int _angle;
     void Start()
