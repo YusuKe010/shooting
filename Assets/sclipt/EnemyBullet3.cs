@@ -23,7 +23,7 @@ public class EnemyBullet3 : MonoBehaviour
     {
         if (collision.tag == "Out")
         {
-            
+            Destroy(gameObject);
         }
     }
 }

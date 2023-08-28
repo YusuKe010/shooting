@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,4 +27,5 @@ public class EnemyBullet4 : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
 }
