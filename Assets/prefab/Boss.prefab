@@ -268,9 +268,11 @@ MonoBehaviour:
   m_bulletPrefab: {fileID: 2687508797662752034, guid: 838aedd2aba0dc54a8739b0838ba7e9b, type: 3}
   m_muzzle: {fileID: 4294717744379401214}
   m_bullet: {fileID: -5640094370988351677, guid: 838aedd2aba0dc54a8739b0838ba7e9b, type: 3}
-  _timer: []
+  _timer:
+  - 0
+  - 0
   _Angle: 0
-  _angle: 
+  _angle: 0000000000000000
 --- !u!114 &2229694195071063404
 MonoBehaviour:
   m_ObjectHideFlags: 0

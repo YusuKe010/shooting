@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))] // Rigidbody コンポーネントのアタッチを強制する
 public class Player : MonoBehaviour
 {
+    [SerializeField] SceneChanger _sceneChanger;
+
     /// <summary>プレイヤーの移動速度</summary>
     [SerializeField] float m_moveSpeed = 5f;
     /// <summary>弾のプレハブ</summary>
@@ -48,7 +49,7 @@ public class Player : MonoBehaviour
 
         if(_life <=0)
         {
-            SceneManager.LoadScene("Title");
+            _sceneChanger.SceneChange("Title");
         }
         
     }

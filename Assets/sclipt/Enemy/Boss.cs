@@ -31,7 +31,7 @@ public class Boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_bossHp <= 0)
+        if (GameManager._instance.Wave != _saveWave)
         {
             _bossHp = 10000;
             _saveWave++;

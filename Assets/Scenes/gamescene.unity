@@ -332,6 +332,7 @@ GameObject:
   m_Component:
   - component: {fileID: 293166904}
   - component: {fileID: 293166905}
+  - component: {fileID: 293166906}
   m_Layer: 0
   m_Name: GameManeger
   m_TagString: Untagged
@@ -366,7 +367,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd06484d8073ec842b9b5e5aa96d369a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _changer: {fileID: 293166906}
   _wave: 0
+--- !u!114 &293166906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293166903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b4cfbf28a129624197a7ab01c2b6224, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &353731272
 GameObject:
   m_ObjectHideFlags: 0
@@ -1262,6 +1276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9624101525da1254698ad651e38cf84c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sceneChanger: {fileID: 293166906}
   m_moveSpeed: 5
   m_bulletPrefab: {fileID: 299307991951753039, guid: 1c6b9d20110444745974cb728d9de7dc, type: 3}
   m_muzzle: {fileID: 1121981503}
@@ -1296,7 +1311,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1958083916}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -1318,7 +1333,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5023425546504488184, guid: ac4bec938edd25c42ab79e1514d282ac, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -5023425546504488184, guid: ac4bec938edd25c42ab79e1514d282ac, type: 3}
       propertyPath: _angle.Array.size

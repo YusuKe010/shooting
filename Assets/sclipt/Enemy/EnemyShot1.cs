@@ -7,9 +7,10 @@ public class EnemyShot1 : MonoBehaviour
     [SerializeField] GameObject m_bulletPrefab = null;
     [SerializeField] Transform m_muzzle = null;
     [SerializeField] EnemyBullet m_bullet;
-    [SerializeField] float[] _timer;
-    [SerializeField] float _Angle;
-    [SerializeField] int[] _angle;
+
+    [SerializeField, Header("ˆê‰ò‚Ì’e‚Ìo‚éŠÔŠuAŸ‚Ì‰ò‚ªo‚éŠÔŠu")] float[] _timer;
+    [SerializeField, Header("Ÿ‚Éo‚é’e‚ÌŠp“x")] float _Angle;
+    [SerializeField, Header("ˆê‰ñ‚Éo‚é’e‚ÌŠÔŠu")] int[] _angle;
     // Start is called before the first frame update
     void Start()
     {
