@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-/// <summary>
-/// シューティングゲームの自機を操作するためのコンポーネント
-/// </summary>
 [RequireComponent(typeof(Rigidbody2D))] // Rigidbody コンポーネントのアタッチを強制する
 public class Player : MonoBehaviour
 {
@@ -16,10 +14,11 @@ public class Player : MonoBehaviour
     [SerializeField] Transform m_muzzle = null;
     [SerializeField] Transform _Player;
     /// <summary>一画面の最大段数 (0 = 無制限)</summary>
-    [SerializeField, Range(0, 10)] int m_bulletLimit = 0;
+    [SerializeField, Range(0, 1f)] float m_bulletLimit = 0;
     Rigidbody2D m_rb;
 
-    float _Timer;
+    [SerializeField] int _life = 3;
+     float _Timer;
     void Start()
     {
         m_rb = GetComponent<Rigidbody2D>();
@@ -28,16 +27,14 @@ public class Player : MonoBehaviour
     void Update()
     {
         // 自機を移動させる
-        float h = Input.GetAxisRaw("Horizontal");   // 垂直方向の入力を取得する
-        float v = Input.GetAxisRaw("Vertical");     // 水平方向の入力を取得する
-        Vector2 dir = new Vector2(h, v).normalized; // 進行方向の単位ベクトルを作る (dir = direction) 
-        m_rb.velocity = dir * m_moveSpeed;        // 単位ベクトルにスピードをかけて速度ベクトルにして、それを Rigidbody の速度ベクトルとしてセットする
+        float h = Input.GetAxisRaw("Horizontal");   
+        float v = Input.GetAxisRaw("Vertical");     
+        Vector2 dir = new Vector2(h, v).normalized;  
+        m_rb.velocity = dir * m_moveSpeed;        
 
-        // 左クリックまたは左 Ctrl で弾を発
-        // 射する（単発）
         if (Input.GetButton("Fire1") )
         {
-            if (_Timer > 0.15f)    // 画面内の弾数を制限する
+            if (_Timer > m_bulletLimit)  
             {
                 Fire1();
                 _Timer = 0;
@@ -48,12 +45,13 @@ public class Player : MonoBehaviour
             }
             
         }
+
+        if(_life <=0)
+        {
+            SceneManager.LoadScene("Title");
+        }
         
     }
-
-    /// <summary>
-    /// 弾を発射する
-    /// </summary>
     void Fire1()
     {
         if (m_bulletPrefab && m_muzzle) // m_bulletPrefab にプレハブが設定されている時 かつ m_muzzle に弾の発射位置が設定されている時
@@ -61,6 +59,13 @@ public class Player : MonoBehaviour
             GameObject go = Instantiate(m_bulletPrefab, m_muzzle.position, m_bulletPrefab.transform.rotation);  // インスペクターから設定した m_bulletPrefab をインスタンス化する
             go.transform.SetParent(this.transform);
             
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            _life -= 1;
         }
     }
 }

@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class EnemyShot4 : MonoBehaviour
 {
-    [SerializeField] GameObject[] m_bulletPrefab = null;
+    [SerializeField] GameObject m_bulletPrefab = null;
     [SerializeField] Transform m_muzzle = null;
     [SerializeField] EnemyBullet4 m_bullet;
-    [SerializeField] EnemyBullet4_2 m_bullet4_2;
     [SerializeField] float[] _timer;
     [SerializeField] int _angle;
     void Start()
@@ -23,12 +22,7 @@ public class EnemyShot4 : MonoBehaviour
         {
             if (_timer[0] > 0.5f)
             {
-
-                
-                for (int i = 0; i < 3; i++)
-                {
-                    Fir4();
-                }
+                Fir4();
                 _timer[0] = 0;
             }
             else
@@ -43,12 +37,14 @@ public class EnemyShot4 : MonoBehaviour
     }
     void Fir4()
     {
-        if (m_bulletPrefab[0] && m_muzzle)
-        {
-            GameObject go = Instantiate(m_bulletPrefab[0], m_muzzle.position, m_bulletPrefab[0].transform.rotation);
-            GameObject go2 = Instantiate(m_bulletPrefab[1], m_muzzle.position, m_bulletPrefab[1].transform.rotation);
-            go.transform.position = this.transform.position;
-
-        }
+        m_bullet._plusDegree = 0;
+        GameObject go = Instantiate(m_bulletPrefab, m_muzzle.position, m_bulletPrefab.transform.rotation);
+        m_bullet._plusDegree = 6;
+        GameObject go2 = Instantiate(m_bulletPrefab, m_muzzle.position, m_bulletPrefab.transform.rotation);
+        m_bullet._plusDegree = -6;
+        GameObject go3 = Instantiate(m_bulletPrefab, m_muzzle.position, m_bulletPrefab.transform.rotation);
+        go.transform.position = this.transform.position;
+        go2.transform.position = this.transform.position;
+        go3.transform.position = this.transform.position;
     }
 }

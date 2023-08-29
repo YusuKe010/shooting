@@ -135,12 +135,14 @@ GameObject:
   - component: {fileID: 4294717745029689475}
   - component: {fileID: 4294717745029689474}
   - component: {fileID: 4294717745029689473}
+  - component: {fileID: 6921317707065255728}
   - component: {fileID: -5023425546504488184}
   - component: {fileID: 2229694195071063404}
   - component: {fileID: 4294717745029689472}
   - component: {fileID: 6546564902336167520}
+  - component: {fileID: 5928063985084642452}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -238,6 +240,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6921317707065255728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4294717745029689476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdb8f566889b0b74b82b53fb52e1dff3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bossHp: 5000
 --- !u!114 &-5023425546504488184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,9 +309,6 @@ MonoBehaviour:
   _Timer:
   - 0.8
   - 0
-  _Random:
-  - 0
-  - 0
 --- !u!114 &6546564902336167520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,13 +321,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 257d71408ae85b74da13744f67e3d8c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_bulletPrefab:
-  - {fileID: 6999733602293440652, guid: af7936f14d2002440a17c46b13ff8df9, type: 3}
-  - {fileID: 2473864853240523097, guid: cbc6519a338943b429be15e5d586b727, type: 3}
-  - {fileID: 536085081614336401, guid: 5cfc792e49d8d8949ae9ae5ce82f71b3, type: 3}
+  m_bulletPrefab: {fileID: 0}
   m_muzzle: {fileID: 4294717744379401214}
   m_bullet: {fileID: 1894288978680184521, guid: 5d2ce3a805619e24c9f7dd69b22d5750, type: 3}
   _timer:
   - 0
   - 0
   _angle: 0
+--- !u!70 &5928063985084642452
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4294717745029689476}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1, y: 1}
+  m_Direction: 0

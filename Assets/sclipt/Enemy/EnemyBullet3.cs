@@ -10,7 +10,7 @@ public class EnemyBullet3 : MonoBehaviour
     // ‰ñ“]Ž²
     [SerializeField] public Vector3 _axis = Vector3.up;
     // ‰~‰^“®ŽüŠú
-    [SerializeField] private float _period = 2;
+    [SerializeField] float _period = 2;
     [SerializeField] float _DownSpeed = -1.0f;
     private void Update()
     {
