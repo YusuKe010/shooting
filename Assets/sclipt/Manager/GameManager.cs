@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
 
         if (_wave >= 5)
         {
+
             _changer.SceneChange("GameClear");
         }
         

@@ -11,6 +11,9 @@ public class Boss : MonoBehaviour
     EnemyShot3 enemyShot3;
     EnemyShot4 enemyShot4;
 
+    [SerializeField] GameObject _powerUpItem;
+    [SerializeField] Transform[] _muzle;
+
     [SerializeField] public float _bossHp = 5000;
     public float BossHp => _bossHp;
     int _saveWave;
@@ -33,6 +36,10 @@ public class Boss : MonoBehaviour
     {
         if (GameManager._instance.Wave != _saveWave)
         {
+            foreach (var muzle in _muzle)
+            {
+                Instantiate(_powerUpItem, muzle.position, muzle.rotation);
+            }
             _bossHp = 10000;
             _saveWave++;
         }

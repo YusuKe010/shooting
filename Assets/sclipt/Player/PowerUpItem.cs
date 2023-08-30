@@ -21,6 +21,7 @@ public class PowerUpItem : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             _playerBullet.PowerUp(0.2f);
+            Destroy(gameObject);
         }
     }
 }

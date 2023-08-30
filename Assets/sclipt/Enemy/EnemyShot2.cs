@@ -37,9 +37,9 @@ public class EnemyShot2 : MonoBehaviour
     }
     void Fire2()
     {
-        for (int i = 0; i < m_muzzle.Length; i++)
+        foreach (Transform t in m_muzzle)
         {
-            GameObject go2 = Instantiate(m_bulletPrefab, m_muzzle[i].position, m_bulletPrefab.transform.rotation);
+            GameObject go2 = Instantiate(m_bulletPrefab, t.position, t.rotation);
         }
     }
     //--------------------------------------------------------------------------------------------------
