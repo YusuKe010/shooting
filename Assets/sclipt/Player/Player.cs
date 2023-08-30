@@ -7,19 +7,16 @@ public class Player : MonoBehaviour
 {
     [SerializeField] SceneChanger _sceneChanger;
 
-    /// <summary>プレイヤーの移動速度</summary>
     [SerializeField] float m_moveSpeed = 5f;
-    /// <summary>弾のプレハブ</summary>
     [SerializeField] GameObject m_bulletPrefab = null;
-    /// <summary>弾の発射位置</summary>
     [SerializeField] Transform m_muzzle = null;
     [SerializeField] Transform _Player;
-    /// <summary>一画面の最大段数 (0 = 無制限)</summary>
     [SerializeField, Range(0, 1f)] float m_bulletLimit = 0;
     Rigidbody2D m_rb;
 
     [SerializeField] int _life = 3;
      float _Timer;
+
     void Start()
     {
         m_rb = GetComponent<Rigidbody2D>();

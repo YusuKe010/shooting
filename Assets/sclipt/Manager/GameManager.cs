@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager _instance = null;
 
     [SerializeField] SceneChanger _changer;
+    ScoreManager _scoreManager;
 
     [SerializeField] int _wave;
     public int Wave => _wave;
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
     {
         if (Boss._instance.BossHp <= 0)
         {
+            _scoreManager.ScoreUp(10000);
             _wave++;
         }
 
@@ -34,4 +36,5 @@ public class GameManager : MonoBehaviour
         }
         
     }
+
 }
