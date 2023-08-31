@@ -36,10 +36,10 @@ public class Boss : MonoBehaviour
     {
         if (GameManager._instance.Wave != _saveWave)
         {
-            foreach (var muzle in _muzle)
-            {
-                Instantiate(_powerUpItem, muzle.position, muzle.rotation);
-            }
+            //foreach (var muzle in _muzle)
+            //{
+            //    Instantiate(_powerUpItem, muzle.position, muzle.rotation);
+            //}
             _bossHp = 10000;
             _saveWave++;
         }
@@ -69,6 +69,13 @@ public class Boss : MonoBehaviour
         {
             enemyShot1.enabled = true;
             enemyShot2.enabled = true;
+            enemyShot3.enabled = false;
+            enemyShot4.enabled = false;
+        }
+        if(GameManager._instance.Wave == 5)
+        {
+            enemyShot1.enabled = false;
+            enemyShot2.enabled = false;
             enemyShot3.enabled = false;
             enemyShot4.enabled = false;
         }

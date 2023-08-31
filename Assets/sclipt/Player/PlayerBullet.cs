@@ -9,6 +9,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))] // Rigidbody コンポーネントのアタッチを強制する
 public class PlayerBullet : MonoBehaviour
 {
+
     [SerializeField] ScoreManager _scoreManager;
     /// <summary>弾の発射方向</summary>
     [SerializeField] Vector2 _direction = Vector2.up;
@@ -17,6 +18,7 @@ public class PlayerBullet : MonoBehaviour
     Rigidbody2D m_rb;
 
     [SerializeField] float _bulletDamage = 10;
+    public float BulletDamage => _bulletDamage;
 
     void Start()
     {
