@@ -28,12 +28,6 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if (_score != _saveScore)
-        {
-            _scoreText.text = "Score" + _score.ToString("F0");
-
-        }
         if(GameManager._instance.Wave < 5)
         {
             _timer += Time.deltaTime;
@@ -48,6 +42,8 @@ public class ScoreManager : MonoBehaviour
     }
     public void ScoreUp(float upScore)
     {
+        Text scoreText = _scoreText;
         _score += upScore;
+        scoreText.text = "Score:" + _score.ToString("0000000000");
     }
 }

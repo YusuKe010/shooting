@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Boss : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Boss : MonoBehaviour
     EnemyShot3 enemyShot3;
     EnemyShot4 enemyShot4;
 
+    [SerializeField] Scrollbar _hpBer;
     [SerializeField] GameObject _powerUpItem;
     [SerializeField] Transform[] _muzle;
 
@@ -85,6 +87,8 @@ public class Boss : MonoBehaviour
     }
     public void WeponHit(float Damage)
     {
+        Scrollbar scrollbar = _hpBer;
         _bossHp -= Damage;
+        _hpBer.size = 1f / _bossHp;
     }
 }

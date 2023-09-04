@@ -9,15 +9,13 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))] // Rigidbody コンポーネントのアタッチを強制する
 public class PlayerBullet : MonoBehaviour
 {
-
-    [SerializeField] ScoreManager _scoreManager;
     /// <summary>弾の発射方向</summary>
     [SerializeField] Vector2 _direction = Vector2.up;
     /// <summary>弾の飛ぶ速度</summary>
     [SerializeField] float m_bulletSpeed = 10f;
     Rigidbody2D m_rb;
 
-    [SerializeField] float _bulletDamage = 10;
+    [SerializeField] float _bulletDamage = 0.01f;
     public float BulletDamage => _bulletDamage;
 
     void Start()
@@ -37,7 +35,8 @@ public class PlayerBullet : MonoBehaviour
         {
             Boss boss = collision.gameObject.GetComponent<Boss>();
             boss.WeponHit(_bulletDamage);
-            _scoreManager.ScoreUp(100);
+            ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
+            scoreManager.ScoreUp(_bulletDamage);
             Destroy(this.gameObject);
         }
     }

@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public int Wave => _wave;
 
     float _saveBulletDamage;
+
     private void Awake()
     {
         _instance = this; 
@@ -34,7 +35,6 @@ public class GameManager : MonoBehaviour
     {
         if (Boss._instance.BossHp <= 0)
         {
-            
             _scoreManager.ScoreUp(10000);
             _wave++;
         }

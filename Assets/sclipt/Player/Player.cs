@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D))] // Rigidbody コンポーネントのアタッチを強制する
 public class Player : MonoBehaviour
@@ -14,7 +15,9 @@ public class Player : MonoBehaviour
     [SerializeField, Range(0, 1f)] float m_bulletLimit = 0;
     Rigidbody2D m_rb;
 
+    [SerializeField] Text _lifeText;
     [SerializeField] int _life = 3;
+    
      float _Timer;
 
     void Start()
@@ -24,24 +27,27 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        // 自機を移動させる
-        float h = Input.GetAxisRaw("Horizontal");   
-        float v = Input.GetAxisRaw("Vertical");     
-        Vector2 dir = new Vector2(h, v).normalized;  
-        m_rb.velocity = dir * m_moveSpeed;        
-
-        if (Input.GetButton("Fire1") )
+        if (GameManager._instance.Wave < 5)
         {
-            if (_Timer > m_bulletLimit)  
+            // 自機を移動させる
+            float h = Input.GetAxisRaw("Horizontal");
+            float v = Input.GetAxisRaw("Vertical");
+            Vector2 dir = new Vector2(h, v).normalized;
+            m_rb.velocity = dir * m_moveSpeed;
+
+            if (Input.GetButton("Fire1"))
             {
-                Fire1();
-                _Timer = 0;
+                if (_Timer > m_bulletLimit)
+                {
+                    Fire1();
+                    _Timer = 0;
+                }
+                else
+                {
+                    _Timer += Time.deltaTime;
+                }
+
             }
-            else
-            {
-                _Timer += Time.deltaTime;
-            }
-            
         }
 
         if(_life <=0)
@@ -64,6 +70,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet"))
         {
             _life -= 1;
+            _lifeText.text = "Player:" + _life.ToString("00");
         }
     }
 }
