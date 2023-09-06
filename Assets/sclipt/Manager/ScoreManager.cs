@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
+    public static ScoreManager _instance;
 
     [SerializeField] Text _scoreText;
     [SerializeField] float _score = 0;

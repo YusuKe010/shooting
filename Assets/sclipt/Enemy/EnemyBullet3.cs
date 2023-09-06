@@ -19,6 +19,13 @@ public class EnemyBullet3 : MonoBehaviour
         transform.Translate(0f,_DownSpeed,0.0f);
         Destroy(gameObject,12.0f);
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Bomb"))
+        {
+            Destroy(gameObject);
+        }
+    }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.tag == "Out")

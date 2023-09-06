@@ -15,11 +15,12 @@ public class PlayerBullet : MonoBehaviour
     [SerializeField] float m_bulletSpeed = 10f;
     Rigidbody2D m_rb;
 
-    [SerializeField] float _bulletDamage = 0.01f;
-    public float BulletDamage => _bulletDamage;
+    [SerializeField] float _bulletPower = 0.01f;
+    public float BulletDamage => _bulletPower;
 
     void Start()
     {
+        _bulletPower = 0.01f;
         m_rb = GetComponent<Rigidbody2D>();
         Vector3 v = _direction.normalized * m_bulletSpeed; // 弾が飛ぶ速度ベクトルを計算する
         m_rb.velocity = v;      // 速度ベクトルを弾にセットする
@@ -27,18 +28,19 @@ public class PlayerBullet : MonoBehaviour
 
     public void PowerUp(float powerUp)
     {
-        _bulletDamage += powerUp;
+        _bulletPower += powerUp;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Boss"))
         {
             Boss boss = collision.gameObject.GetComponent<Boss>();
-            boss.WeponHit(_bulletDamage * 200);
+            boss.WeponHit(_bulletPower * 10000);
             ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
-            scoreManager.ScoreUp(_bulletDamage * 200);
+            scoreManager.ScoreUp(_bulletPower * 10000);
             Destroy(this.gameObject);
         }
+        
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

@@ -10,11 +10,17 @@ public class Player : MonoBehaviour
 
     [SerializeField] float m_moveSpeed = 5f;
     [SerializeField] GameObject m_bulletPrefab = null;
+    [SerializeField] GameObject _bombGO;
     [SerializeField] Transform m_muzzle = null;
     [SerializeField] Transform _Player;
     [SerializeField, Range(0, 1f)] float m_bulletLimit = 0;
     Rigidbody2D m_rb;
 
+    //ボム表示
+    [SerializeField] Text _bombText;
+    int _bomb = 3;
+
+    //残機表示
     [SerializeField] Text _lifeText;
     [SerializeField] int _life = 3;
 
@@ -38,6 +44,7 @@ public class Player : MonoBehaviour
             Vector2 dir = new Vector2(h, v).normalized;
             m_rb.velocity = dir * m_moveSpeed;
 
+
             if (Input.GetButton("Fire1"))
             {
                 if (_Timer > m_bulletLimit)
@@ -51,6 +58,18 @@ public class Player : MonoBehaviour
                 }
 
             }
+
+            if(Input.GetMouseButtonDown(1) && _bomb != 0)
+            {
+                Instantiate(_bombGO, m_muzzle.position, _bombGO.transform.rotation);
+                _bomb -= 1;
+                _bombText.text = "Bomb:" + _bomb.ToString("d2");
+            }
+
+        }
+        else
+        {
+            m_rb.velocity = new Vector2 (0, 0);
         }
 
         if(_life <=0)

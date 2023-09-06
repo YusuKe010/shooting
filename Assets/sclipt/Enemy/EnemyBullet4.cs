@@ -21,6 +21,13 @@ public class EnemyBullet4 : MonoBehaviour
         velocity.y = m_speed * Mathf.Sin(Degree + _plusDegree);
         rb.velocity = new Vector2(velocity.x,velocity.y);
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Bomb"))
+        {
+            Destroy(gameObject);
+        }
+    }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Out"))

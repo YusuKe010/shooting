@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] PlayerBullet _playerBullet;
     [SerializeField] SceneChanger _changer; 
     [SerializeField,Header("0:プレイヤー弾の威力")] Text _text; //自機の強さを表示する
-    [SerializeField] ScoreManager _scoreManager;
 
     //ウェーブの管理
     [SerializeField] int _wave;
@@ -37,12 +36,12 @@ public class GameManager : MonoBehaviour
         if (Boss._instance.BossHp <= 0)
         {
             //スコアアップして、ウェーブを進める
-            _scoreManager.ScoreUp(10000);
+            //ScoreManager._instance.ScoreUp(100000);
             _wave++;
 
             //ウェーブが進んだらボスの弾を消す
             GameObject[] gameObject = GameObject.FindGameObjectsWithTag("Bullet");
-            foreach(GameObject a in gameObject)
+            foreach (GameObject a in gameObject)
             {
                 Destroy(a);
             }
