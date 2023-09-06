@@ -37,6 +37,11 @@ public class GameManager : MonoBehaviour
         {
             _scoreManager.ScoreUp(10000);
             _wave++;
+            GameObject[] gameObject = GameObject.FindGameObjectsWithTag("Bullet");
+            foreach(GameObject a in gameObject)
+            {
+                Destroy(a);
+            }
         }
 
         if (_wave >= 5)
