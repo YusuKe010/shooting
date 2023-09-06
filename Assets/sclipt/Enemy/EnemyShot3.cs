@@ -35,8 +35,9 @@ public class EnemyShot3 : MonoBehaviour
         }
         else if (_Timer[0] > 4.1f)
         {
-            m_bullet3._center = Vector3.right * Random.Range(-3.0f, 3.0f);
-            m_bullet3._center = Vector3.up * Random.Range(-5.0f, 5.0f);
+            //ˆê’è‚Ì”ÍˆÍ‚ğ’†S‚Æ‚µ‚Ä‰ñ‚é
+            m_bullet3._center = Vector3.right * Random.Range(gameObject.transform.position.x -3f, gameObject.transform.position.x + 3f);
+            m_bullet3._center = Vector3.up * Random.Range(gameObject.transform.position.y -5f, gameObject.transform.position.y -10f);
             //m_bullet3._center = this.gameObject.transform.position;   //©•ª‚Ìü‚è‚ğ‰ñ‚é‚Í‚¸
             m_bullet3._axis *= -1.0f;
             _Timer[0] = 0;

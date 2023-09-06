@@ -17,7 +17,10 @@ public class Player : MonoBehaviour
 
     [SerializeField] Text _lifeText;
     [SerializeField] int _life = 3;
-    
+
+    //ñ≥ìGÉÇÅ[Éh
+    [SerializeField] bool _isCollision = true;
+
      float _Timer;
 
     void Start()
@@ -67,7 +70,7 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Bullet"))
+        if (collision.gameObject.CompareTag("Bullet") && !_isCollision)
         {
             _life -= 1;
             _lifeText.text = "Player:" + _life.ToString("00");

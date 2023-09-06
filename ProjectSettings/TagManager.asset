@@ -8,6 +8,7 @@ TagManager:
   - Bullet
   - PlayerBullet
   - Boss
+  - Bomb
   layers:
   - Default
   - TransparentFX
