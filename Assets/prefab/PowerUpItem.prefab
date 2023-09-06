@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1361449951712423162}
   - component: {fileID: -1111697613731361771}
   - component: {fileID: -194492584724230578}
+  - component: {fileID: -25402875672040593}
   m_Layer: 0
   m_Name: PowerUpItem
   m_TagString: Untagged
@@ -123,3 +124,16 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!114 &-25402875672040593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361449951712423163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be282c5b6f9250c4085ada40add6c755, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerBullet: {fileID: -8202648437385251593, guid: 1c6b9d20110444745974cb728d9de7dc, type: 3}

@@ -11,9 +11,7 @@ public class EnemyBullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         velocity.x = _speed * Mathf.Cos(angle * Mathf.Deg2Rad);
-
         velocity.y = _speed * Mathf.Sin(angle * Mathf.Deg2Rad);
 
         float zAngle = Mathf.Atan2(velocity.y,velocity.x) * Mathf.Rad2Deg - 90.0f;

@@ -34,9 +34,9 @@ public class PlayerBullet : MonoBehaviour
         if (collision.gameObject.CompareTag("Boss"))
         {
             Boss boss = collision.gameObject.GetComponent<Boss>();
-            boss.WeponHit(_bulletDamage);
+            boss.WeponHit(_bulletDamage * 200);
             ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
-            scoreManager.ScoreUp(_bulletDamage);
+            scoreManager.ScoreUp(_bulletDamage * 200);
             Destroy(this.gameObject);
         }
     }

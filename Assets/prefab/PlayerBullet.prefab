@@ -206,10 +206,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7e52b0d691a164cbdbde6edf1ef373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scoreManager: {fileID: 7893322809462373572, guid: 85242b4a94be2884191031674a419837, type: 3}
   _direction: {x: 0, y: 1}
   m_bulletSpeed: 15
-  _bulletDamage: 500
+  _bulletDamage: 1
 --- !u!61 &-4822284956287983141
 BoxCollider2D:
   m_ObjectHideFlags: 0

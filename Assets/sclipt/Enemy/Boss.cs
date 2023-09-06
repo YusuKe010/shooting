@@ -16,6 +16,7 @@ public class Boss : MonoBehaviour
     [SerializeField] GameObject _powerUpItem;
     [SerializeField] Transform[] _muzle;
 
+    float _maxBossHp = 0;
     [SerializeField] public float _bossHp = 5000;
     public float BossHp => _bossHp;
     int _saveWave;
@@ -27,6 +28,7 @@ public class Boss : MonoBehaviour
     }
     void Start()
     {
+        _maxBossHp = _bossHp;
         enemyShot1 = GetComponent<EnemyShot1>();
         enemyShot2 = GetComponent<EnemyShot2>();
         enemyShot3 = GetComponent<EnemyShot3>();
@@ -38,10 +40,10 @@ public class Boss : MonoBehaviour
     {
         if (GameManager._instance.Wave != _saveWave)
         {
-            //foreach (var muzle in _muzle)
-            //{
-            //    Instantiate(_powerUpItem, muzle.position, muzle.rotation);
-            //}
+            for(int i = 0; i < _muzle.Length; i++) 
+            {
+                Instantiate(_powerUpItem, _muzle[i].position, _powerUpItem.transform.rotation);
+            }
             _bossHp = 10000;
             _saveWave++;
         }
@@ -89,6 +91,6 @@ public class Boss : MonoBehaviour
     {
         Scrollbar scrollbar = _hpBer;
         _bossHp -= Damage;
-        _hpBer.size = 1f / _bossHp;
+        scrollbar.size = _bossHp / _maxBossHp;
     }
 }
