@@ -14,7 +14,7 @@ public class Boss : MonoBehaviour
 
     [SerializeField] Scrollbar _hpBer;
     [SerializeField] GameObject _powerUpItem;
-    [SerializeField] Transform[] _muzle;
+    [SerializeField] Transform _muzle;
 
     float _maxBossHp = 0;
     [SerializeField] public float _bossHp = 5000;
@@ -38,12 +38,9 @@ public class Boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager._instance.Wave != _saveWave)
+        if (GameManager._instance.Wave != _saveWave && GameManager._instance.Wave < 5)
         {
-            for(int i = 0; i < _muzle.Length; i++) 
-            {
-                Instantiate(_powerUpItem, _muzle[i].position, _powerUpItem.transform.rotation);
-            }
+            Instantiate(_powerUpItem, _muzle.position, _powerUpItem.transform.rotation);
             _bossHp = 10000;
             _saveWave++;
         }
@@ -76,7 +73,7 @@ public class Boss : MonoBehaviour
             enemyShot3.enabled = false;
             enemyShot4.enabled = false;
         }
-        if(GameManager._instance.Wave == 5)
+        if (GameManager._instance.Wave == 5)
         {
             enemyShot1.enabled = false;
             enemyShot2.enabled = false;

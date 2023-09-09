@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EnemyShot4 : MonoBehaviour
 {
-    [SerializeField] GameObject m_bulletPrefab = null;
-    [SerializeField] Transform m_muzzle = null;
-    [SerializeField] EnemyBullet4 m_bullet;
+    [SerializeField] GameObject _bulletPrefab = null;
+    [SerializeField] Transform _muzzle = null;
+    [SerializeField] EnemyBullet4 _bullet;
     [SerializeField] float[] _timer;
     [SerializeField] int _angle;
     void Start()
@@ -37,12 +37,12 @@ public class EnemyShot4 : MonoBehaviour
     }
     void Fir4()
     {
-        m_bullet._plusDegree = 0;
-        GameObject go = Instantiate(m_bulletPrefab, m_muzzle.position, m_bulletPrefab.transform.rotation);
-        m_bullet._plusDegree = 6;
-        GameObject go2 = Instantiate(m_bulletPrefab, m_muzzle.position, m_bulletPrefab.transform.rotation);
-        m_bullet._plusDegree = -6;
-        GameObject go3 = Instantiate(m_bulletPrefab, m_muzzle.position, m_bulletPrefab.transform.rotation);
+        _bullet._plusDegree = 0;
+        GameObject go = Instantiate(_bulletPrefab, _muzzle.position, _bulletPrefab.transform.rotation);
+        _bullet._plusDegree = 7;
+        GameObject go2 = Instantiate(_bulletPrefab, _muzzle.position, _bulletPrefab.transform.rotation);
+        _bullet._plusDegree = -7;
+        GameObject go3 = Instantiate(_bulletPrefab, _muzzle.position, _bulletPrefab.transform.rotation);
         go.transform.position = this.transform.position;
         go2.transform.position = this.transform.position;
         go3.transform.position = this.transform.position;

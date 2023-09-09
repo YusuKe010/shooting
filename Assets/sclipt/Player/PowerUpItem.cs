@@ -5,7 +5,6 @@ using UnityEngine;
 public class PowerUpItem : MonoBehaviour
 {
     [SerializeField] PlayerBullet _playerBullet;
-    [SerializeField] ScoreManager _scoreManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +21,7 @@ public class PowerUpItem : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             _playerBullet.PowerUp(0.2f);
-            _scoreManager.ScoreUp(1000);
+            ScoreManager._instance.ScoreUp(1000);
             Destroy(gameObject);
         }
     }

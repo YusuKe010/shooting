@@ -28,7 +28,15 @@ public class PlayerBullet : MonoBehaviour
 
     public void PowerUp(float powerUp)
     {
-        _bulletPower += powerUp;
+        if(_bulletPower >= 5f)
+        {
+            _bulletPower = 5f;
+        }
+        else
+        {
+            _bulletPower += powerUp;
+        }
+        
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -36,8 +44,7 @@ public class PlayerBullet : MonoBehaviour
         {
             Boss boss = collision.gameObject.GetComponent<Boss>();
             boss.WeponHit(_bulletPower * 10000);
-            ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
-            scoreManager.ScoreUp(_bulletPower * 10000);
+            ScoreManager._instance.ScoreUp(_bulletPower * 10000);
             Destroy(this.gameObject);
         }
         

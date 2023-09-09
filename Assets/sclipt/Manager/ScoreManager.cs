@@ -18,6 +18,10 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] Text _clearScoreText;
     [SerializeField] Text _timerText;
 
+    private void Awake()
+    {
+        _instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
