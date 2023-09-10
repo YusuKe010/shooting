@@ -16,6 +16,11 @@ public class Player : MonoBehaviour
     [SerializeField, Range(0, 1f)] float m_bulletLimit = 0;
     Rigidbody2D m_rb;
 
+    //プレイヤーの強さ
+    [SerializeField] float _bulletPower = 0.01f;
+    public float BulletDamage => _bulletPower;
+
+
     //ボム表示
     [SerializeField] Text _bombText;
     int _bomb = 3;
@@ -32,6 +37,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         m_rb = GetComponent<Rigidbody2D>();
+        _bulletPower = 0.01f;
     }
 
     void Update()
@@ -86,6 +92,18 @@ public class Player : MonoBehaviour
             go.transform.SetParent(this.transform);
             
         }
+    }
+    public void PowerUp(float powerUp)
+    {
+        if (_bulletPower >= 5f)
+        {
+            _bulletPower = 5f;
+        }
+        else
+        {
+            _bulletPower += powerUp;
+        }
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

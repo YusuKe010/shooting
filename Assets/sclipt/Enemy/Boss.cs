@@ -41,7 +41,7 @@ public class Boss : MonoBehaviour
         if (GameManager._instance.Wave != _saveWave && GameManager._instance.Wave < 5)
         {
             Instantiate(_powerUpItem, _muzle.position, _powerUpItem.transform.rotation);
-            _bossHp = 10000;
+            _bossHp = _maxBossHp;
             _saveWave++;
         }
 

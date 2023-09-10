@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     //他のスクリプトでメソッドを使うため
     public static GameManager _instance = null;
 
-    [SerializeField] PlayerBullet _playerBullet;
+    [SerializeField] Player _player;
     [SerializeField] SceneChanger _changer; 
     [SerializeField,Header("0:プレイヤー弾の威力")] Text _text; //自機の強さを表示する
 
@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] int _wave;
     public int Wave => _wave;
 
-    float _saveBulletDamage;
+    [SerializeField] float _saveBulletDamage;
 
     private void Awake()
     {
@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
 
     }
 
@@ -36,7 +35,7 @@ public class GameManager : MonoBehaviour
         if (Boss._instance.BossHp <= 0)
         {
             //スコアアップして、ウェーブを進める
-            //ScoreManager._instance.ScoreUp(100000);
+            ScoreManager._instance.ScoreUp(100000);
             _wave++;
 
             //ウェーブが進んだらボスの弾を消す
@@ -50,10 +49,10 @@ public class GameManager : MonoBehaviour
         
 
         //自機の強さが変わった時の処理
-        if(_playerBullet.BulletDamage != _saveBulletDamage)
+        if(_player.BulletDamage != _saveBulletDamage)
         {
             //自機の強さを保存してテキスト表示
-            _saveBulletDamage = _playerBullet.BulletDamage;
+            _saveBulletDamage = _player.BulletDamage;
             _text.text = "Power:" + _saveBulletDamage.ToString("F2");
         }
         
