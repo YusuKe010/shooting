@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 [RequireComponent(typeof(Rigidbody2D))] // Rigidbody コンポーネントのアタッチを強制する
 public class Player : MonoBehaviour
@@ -10,14 +11,18 @@ public class Player : MonoBehaviour
 
     [SerializeField] float m_moveSpeed = 5f;
     [SerializeField] GameObject m_bulletPrefab = null;
-    [SerializeField] GameObject _bombGO;
+    [SerializeField] GameObject _bombPrefab;
     [SerializeField] Transform m_muzzle = null;
     [SerializeField] Transform _Player;
     [SerializeField, Range(0, 1f)] float m_bulletLimit = 0;
     Rigidbody2D m_rb;
+    [SerializeField] Text _powerText;
 
     //プレイヤーの強さ
-    [SerializeField] float _bulletPower = 0.01f;
+
+
+    //弾の威力
+    [SerializeField] float _bulletPower = 1f;
     public float BulletDamage => _bulletPower;
 
 
@@ -37,7 +42,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         m_rb = GetComponent<Rigidbody2D>();
-        _bulletPower = 0.01f;
+        _bulletPower = 1f;
     }
 
     void Update()
@@ -62,16 +67,14 @@ public class Player : MonoBehaviour
                 {
                     _Timer += Time.deltaTime;
                 }
-
             }
 
             if(Input.GetMouseButtonDown(1) && _bomb != 0)
             {
-                Instantiate(_bombGO, m_muzzle.position, _bombGO.transform.rotation);
+                Instantiate(_bombPrefab, m_muzzle.position, _bombPrefab.transform.rotation);
                 _bomb -= 1;
-                _bombText.text = "Bomb:" + _bomb.ToString("d2");
+                _bombText.text = "Spell:" + _bomb.ToString("d2");
             }
-
         }
         else
         {
@@ -82,7 +85,6 @@ public class Player : MonoBehaviour
         {
             _sceneChanger.SceneChange("Title");
         }
-        
     }
     void Fire1()
     {
@@ -90,27 +92,29 @@ public class Player : MonoBehaviour
         {
             GameObject go = Instantiate(m_bulletPrefab, m_muzzle.position, m_bulletPrefab.transform.rotation);  // インスペクターから設定した m_bulletPrefab をインスタンス化する
             go.transform.SetParent(this.transform);
-            
         }
     }
+
+    /// <summary>/// プレーヤーのパワーアップ /// </summary>
     public void PowerUp(float powerUp)
     {
         if (_bulletPower >= 5f)
         {
             _bulletPower = 5f;
+            _powerText.text = "Power:" + _bulletPower.ToString("f2");
         }
         else
         {
             _bulletPower += powerUp;
+            _powerText.text = "Power:" + _bulletPower.ToString("f2");
         }
-
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Bullet") && !_isCollision)
         {
             _life -= 1;
-            _lifeText.text = "Player:" + _life.ToString("00");
+            _lifeText.text = "Player:" + _life.ToString("d2");
         }
     }
 }

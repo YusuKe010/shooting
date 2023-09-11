@@ -45,6 +45,11 @@ public class ScoreManager : MonoBehaviour
             _timerText.text = "撃破時間：" + _timer.ToString("F2");
         }
     }
+
+    /// <summary>
+    /// スコアアップ時
+    /// </summary>
+    /// <param name="upScore"></param>
     public void ScoreUp(float upScore)
     {
         Text scoreText = _scoreText;

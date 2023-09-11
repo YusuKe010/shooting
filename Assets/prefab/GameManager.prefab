@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd06484d8073ec842b9b5e5aa96d369a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerBullet: {fileID: -8202648437385251593, guid: 1c6b9d20110444745974cb728d9de7dc, type: 3}
+  _player: {fileID: 5444721406546585752, guid: e65d04bbf81b80343910493057d15a2a, type: 3}
   _changer: {fileID: 7893322809462373573}
   _text: {fileID: 0}
   _wave: 0

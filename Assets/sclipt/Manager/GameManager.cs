@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] int _wave;
     public int Wave => _wave;
 
-    [SerializeField] float _saveBulletDamage;
+    //[SerializeField] float _saveBulletDamage;
 
     private void Awake()
     {
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         //ボスのHPがゼロになった時の処理
-        if (Boss._instance.BossHp <= 0)
+        if (Boss._instance.BossHp <= 0 && _wave < 5)
         {
             //スコアアップして、ウェーブを進める
             ScoreManager._instance.ScoreUp(100000);
@@ -44,16 +44,6 @@ public class GameManager : MonoBehaviour
             {
                 Destroy(a);
             }
-        }
-
-        
-
-        //自機の強さが変わった時の処理
-        if(_player.BulletDamage != _saveBulletDamage)
-        {
-            //自機の強さを保存してテキスト表示
-            _saveBulletDamage = _player.BulletDamage;
-            _text.text = "Power:" + _saveBulletDamage.ToString("F2");
         }
         
     }
