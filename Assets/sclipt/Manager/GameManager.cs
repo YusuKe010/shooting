@@ -45,7 +45,11 @@ public class GameManager : MonoBehaviour
                 Destroy(a);
             }
         }
-        
+    }
+
+    public void GameStart(GameObject panel)
+    {
+        panel.SetActive(false);
     }
 
 }

@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 5928063985084642452}
   m_Layer: 0
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -388,7 +388,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4294717745029689476}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 13af717d3a9137b4ebf082976d562f64, type: 2}
   m_CullingMode: 0
@@ -414,18 +414,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hpBer: {fileID: 0}
-  _powerUpItem: {fileID: 1361449951712423163, guid: 105c074e185bbc2429bd6953d878066b, type: 3}
-  _muzle:
-  - {fileID: 4294717744379401214}
-  - {fileID: 4294717744238005967}
-  - {fileID: 4294717744648037970}
-  - {fileID: 4294717743416284342}
-  - {fileID: 2921084518513701459}
-  - {fileID: 829394501496571566}
-  - {fileID: 1656106373301086079}
-  - {fileID: 3603376481734422065}
-  - {fileID: 2174901498243129329}
-  - {fileID: 4421665347977652729}
+  _powerUpItem: {fileID: 8318724929756420533, guid: 1fd1c4d4449a4b5468d94421f54d20c7, type: 3}
+  _muzle: {fileID: 4294717744379401214}
   _bossHp: 5000
 --- !u!114 &-5023425546504488184
 MonoBehaviour:
@@ -445,8 +435,8 @@ MonoBehaviour:
   _timer:
   - 0
   - 0
-  _Angle: 0
-  _angle: 0000000000000000
+  _Angle: 3
+  _angle: 240000000a000000
 --- !u!114 &2229694195071063404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,7 +464,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4294717745029689476}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb850130ae1b56246938f0f20d1a9f79, type: 3}
   m_Name: 
@@ -492,14 +482,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4294717745029689476}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 257d71408ae85b74da13744f67e3d8c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_bulletPrefab: {fileID: 0}
-  m_muzzle: {fileID: 4294717744379401214}
-  m_bullet: {fileID: 1894288978680184521, guid: 5d2ce3a805619e24c9f7dd69b22d5750, type: 3}
+  _bulletPrefab: {fileID: 5600523480630882069, guid: 5d2ce3a805619e24c9f7dd69b22d5750, type: 3}
+  _muzzle: {fileID: 4294717744379401214}
+  _bullet: {fileID: 1894288978680184521, guid: 5d2ce3a805619e24c9f7dd69b22d5750, type: 3}
   _timer:
   - 0
   - 0

@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scoreText: {fileID: 0}
-  _score: 9100
+  _score: 0
   _timer: 0
   _gameClearPnanel: {fileID: 0}
   _clearScoreText: {fileID: 0}
