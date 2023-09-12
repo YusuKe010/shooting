@@ -208,7 +208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _direction: {x: 0, y: 1}
   m_bulletSpeed: 15
-  _bulletDamage: 100
+  _bulletDamage: 50
 --- !u!61 &-4822284956287983141
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -7,4 +7,16 @@ public class SceneChanger : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+
+    //パネル消す
+    public void PanelDelete(GameObject nowPanel)
+    {
+        nowPanel.SetActive(false);
+    }
+
+    //パネル出す
+    public void Panel(GameObject panel)
+    {
+        panel.SetActive(true);
+    }
 }

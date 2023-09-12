@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
+
         if(_isStart)
         {
             _wave++;
@@ -58,7 +59,11 @@ public class GameManager : MonoBehaviour
 
         if(_wave >= 5)
         {
-
+            GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("PlayerBullet");
+            foreach (GameObject a in gameObjects)
+            {
+                Destroy(a);
+            }
         }
     }
 
