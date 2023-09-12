@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] Player _player;
     [SerializeField] SceneChanger _changer; 
     [SerializeField,Header("0:プレイヤー弾の威力")] Text _text; //自機の強さを表示する
+    [SerializeField] GameObject _startPanel;
+
+    public bool _isStart;
 
     //ウェーブの管理
     [SerializeField] int _wave;
@@ -25,7 +28,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        _wave = 0;
+        _startPanel.SetActive(true);
     }
 
     // Update is called once per frame
@@ -45,11 +49,24 @@ public class GameManager : MonoBehaviour
                 Destroy(a);
             }
         }
+
+        if(_isStart)
+        {
+            _wave++;
+            _isStart = false;
+        }
+
+        if(_wave >= 5)
+        {
+
+        }
     }
 
     public void GameStart(GameObject panel)
     {
         panel.SetActive(false);
+        GameManager gameManager = FindAnyObjectByType<GameManager>();
+        gameManager._isStart = true;
     }
 
 }

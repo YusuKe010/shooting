@@ -52,21 +52,21 @@ public class Boss : MonoBehaviour
             enemyShot3.enabled = false;
             enemyShot4.enabled = true;
         }
-        if (GameManager._instance.Wave == 2)
+        else if (GameManager._instance.Wave == 2)
         {
             enemyShot1.enabled = false;
             enemyShot2.enabled = true;
             enemyShot3.enabled = true;
             enemyShot4.enabled = false;
         }
-        if (GameManager._instance.Wave == 3)
+        else if (GameManager._instance.Wave == 3)
         {
             enemyShot1.enabled = false;
             enemyShot2.enabled = false;
             enemyShot3.enabled = true;
             enemyShot4.enabled = true;
         }
-        if (GameManager._instance.Wave == 4)
+        else if (GameManager._instance.Wave == 4)
         {
             enemyShot1.enabled = true;
             enemyShot2.enabled = true;
