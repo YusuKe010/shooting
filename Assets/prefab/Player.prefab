@@ -103,10 +103,11 @@ MonoBehaviour:
   _sceneChanger: {fileID: 7893322809462373573, guid: 85242b4a94be2884191031674a419837, type: 3}
   m_moveSpeed: 5
   m_bulletPrefab: {fileID: 299307991951753039, guid: 1c6b9d20110444745974cb728d9de7dc, type: 3}
-  _bombGO: {fileID: 5378972260754504820, guid: 5bb4a3dc06055ab40a75c4b2026fec64, type: 3}
+  _bombPrefab: {fileID: 5378972260754504820, guid: 5bb4a3dc06055ab40a75c4b2026fec64, type: 3}
   m_muzzle: {fileID: 5444721406853595639}
   _Player: {fileID: 5444721406546585734}
   m_bulletLimit: 0.1
+  _powerText: {fileID: 0}
   _bulletPower: 5
   _bombText: {fileID: 0}
   _lifeText: {fileID: 0}
