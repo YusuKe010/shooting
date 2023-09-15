@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] SceneChanger _changer; 
     [SerializeField,Header("0:プレイヤー弾の威力")] Text _text; //自機の強さを表示する
     [SerializeField] GameObject _startPanel;
+    [SerializeField] GameObject _fadePanel;
+    [SerializeField] CanvasGroup _fadePanelGroup;
 
     public bool _isStart;
 
@@ -23,20 +26,25 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        _instance = this; 
+        _instance = this;
+        _startPanel.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -500, 0);
     }
-    // Start is called before the first frame update
     void Start()
     {
         _wave = 0;
         _startPanel.SetActive(true);
+        _fadePanel.SetActive(true);
+        _fadePanelGroup.DOFade(0f,1.5f).SetEase(Ease.InQuad) .OnComplete(() => 
+        {
+            _fadePanel.SetActive(false);
+            _startPanel.GetComponent<RectTransform>().DOAnchorPosY(0f, 2f).SetEase(Ease.OutQuart);
+        });
     }
 
-    // Update is called once per frame
     void Update()
     {
         //ボスのHPがゼロになった時の処理
-        if (Boss._instance.BossHp <= 0 && _wave < 5)
+        if (Boss._instance.BossHp <= 0 && _wave < 5 && _wave >= 1)
         {
             //スコアアップして、ウェーブを進める
             ScoreManager._instance.ScoreUp(100000);

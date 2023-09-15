@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,8 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager _instance;
 
     [SerializeField] Text _scoreText;
-    [SerializeField] float _score = 0;
+    [SerializeField] int _score = 0;
+    [SerializeField] float _scoreChangeInterval = 0.5f;
     float _saveScore;
 
     [SerializeField] float _timer;
@@ -50,10 +52,16 @@ public class ScoreManager : MonoBehaviour
     /// スコアアップ時
     /// </summary>
     /// <param name="upScore"></param>
-    public void ScoreUp(float upScore)
+    public void ScoreUp(int upScore)
     {
+        int tempScore = _score;
         Text scoreText = _scoreText;
         _score += upScore;
-        scoreText.text = "Score:" + _score.ToString("0000000000");
+        //scoreText.text = "Score:" + _score.ToString("0000000000");
+        DOTween.To(() => tempScore, x =>
+        {
+            tempScore = x;
+            _scoreText.text = "Score:" + _score.ToString("d10");
+        }, _score, _scoreChangeInterval).OnComplete(() => _scoreText.text = "Score:" + _score.ToString("d10"));
     }
 }

@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (GameManager._instance.Wave < 5)
+        if (GameManager._instance.Wave < 5 && GameManager._instance.Wave >= 1)
         {
             // Ž©‹@‚ðˆÚ“®‚³‚¹‚é
             float h = Input.GetAxisRaw("Horizontal");
