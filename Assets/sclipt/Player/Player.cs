@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEditor.Experimental.GraphView.GraphView;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))] // Rigidbody コンポーネントのアタッチを強制する
 public class Player : MonoBehaviour
@@ -83,7 +84,7 @@ public class Player : MonoBehaviour
 
         if(_life <=0)
         {
-            _sceneChanger.SceneChange("Title");
+            SceneManager.LoadScene("Title");
         }
     }
     void Fire1()

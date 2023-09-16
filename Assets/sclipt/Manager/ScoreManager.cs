@@ -19,6 +19,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] GameObject _gameClearPnanel;
     [SerializeField] Text _clearScoreText;
     [SerializeField] Text _timerText;
+    [SerializeField] 
 
     private void Awake()
     {
@@ -27,6 +28,7 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _gameClearPnanel.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -500);
         _gameClearPnanel.SetActive(false);
         _score = 0;
         _timer = 0;
@@ -45,6 +47,7 @@ public class ScoreManager : MonoBehaviour
             _gameClearPnanel.SetActive(true);
             _clearScoreText.text = "スコア：" + _score.ToString("F0");
             _timerText.text = "撃破時間：" + _timer.ToString("F2");
+            _gameClearPnanel.GetComponent<RectTransform>().DOAnchorPosY(0f, 2f).SetEase(Ease.OutQuart);
         }
     }
 

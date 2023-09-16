@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
         _wave = 0;
         _startPanel.SetActive(true);
         _fadePanel.SetActive(true);
+        _fadePanelGroup.alpha = 1.0f;
         _fadePanelGroup.DOFade(0f,1.5f).SetEase(Ease.InQuad) .OnComplete(() => 
         {
             _fadePanel.SetActive(false);
