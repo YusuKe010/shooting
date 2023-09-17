@@ -28,7 +28,7 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _gameClearPnanel.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -500);
+        _gameClearPnanel.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -200);
         _gameClearPnanel.SetActive(false);
         _score = 0;
         _timer = 0;
@@ -37,7 +37,7 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameManager._instance.Wave < 5)
+        if(GameManager._instance.Wave < 5 && GameManager._instance.Wave >= 1)
         {
             _timer += Time.deltaTime;
 
@@ -46,8 +46,8 @@ public class ScoreManager : MonoBehaviour
         {
             _gameClearPnanel.SetActive(true);
             _clearScoreText.text = "スコア：" + _score.ToString("F0");
-            _timerText.text = "撃破時間：" + _timer.ToString("F2");
-            _gameClearPnanel.GetComponent<RectTransform>().DOAnchorPosY(0f, 2f).SetEase(Ease.OutQuart);
+            //_timerText.text = "撃破時間：" + _timer.ToString("F2");
+            _gameClearPnanel.GetComponent<RectTransform>().DOAnchorPosY(0f, 2f).SetEase(Ease.OutQuart).SetLink(gameObject);
         }
     }
 

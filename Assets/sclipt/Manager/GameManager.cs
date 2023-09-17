@@ -12,9 +12,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] Player _player;
     [SerializeField] SceneChanger _changer; 
     [SerializeField,Header("0:プレイヤー弾の威力")] Text _text; //自機の強さを表示する
-    [SerializeField] GameObject _startPanel;
+
+    [SerializeField] GameObject _startPanel; //操作説明パネル
+
+    //フェードパネル
     [SerializeField] GameObject _fadePanel;
-    [SerializeField] CanvasGroup _fadePanelGroup;
+    [SerializeField] CanvasGroup _fadeCanvasGroup;
 
     public bool _isStart;
 
@@ -34,8 +37,8 @@ public class GameManager : MonoBehaviour
         _wave = 0;
         _startPanel.SetActive(true);
         _fadePanel.SetActive(true);
-        _fadePanelGroup.alpha = 1.0f;
-        _fadePanelGroup.DOFade(0f,1.5f).SetEase(Ease.InQuad) .OnComplete(() => 
+        _fadeCanvasGroup.alpha = 1.0f;
+        _fadeCanvasGroup.DOFade(0f,1.5f).SetEase(Ease.InQuad) .OnComplete(() => 
         {
             _fadePanel.SetActive(false);
             _startPanel.GetComponent<RectTransform>().DOAnchorPosY(0f, 2f).SetEase(Ease.OutQuart);
