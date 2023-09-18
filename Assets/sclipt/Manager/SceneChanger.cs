@@ -11,10 +11,6 @@ public class SceneChanger : MonoBehaviour
     [SerializeField] GameObject _fadepanel;
     [SerializeField] CanvasGroup _fadeCanvasGroup;
 
-    //スライドパネル
-    [SerializeField] GameObject _tutorialPanel;
-    [SerializeField] GameObject _hardPanel;
-
     public void SceneChange(string sceneName)
     {
         StartCoroutine(Fade(sceneName));

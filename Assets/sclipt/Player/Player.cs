@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using static UnityEditor.Experimental.GraphView.GraphView;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 [RequireComponent(typeof(Rigidbody2D))] // Rigidbody コンポーネントのアタッチを強制する
 public class Player : MonoBehaviour
@@ -82,7 +83,8 @@ public class Player : MonoBehaviour
             m_rb.velocity = new Vector2 (0, 0);
         }
 
-        if(_life <=0)
+
+         if(_life <=0)
         {
             SceneManager.LoadScene("Title");
         }
@@ -116,6 +118,11 @@ public class Player : MonoBehaviour
         {
             _life -= 1;
             _lifeText.text = "Player:" + _life.ToString("d2");
+            GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
+            foreach (GameObject bullet in bullets)
+            {
+                Destroy(bullet);
+            }
         }
     }
 }

@@ -46,7 +46,7 @@ public class ScoreManager : MonoBehaviour
         {
             _gameClearPnanel.SetActive(true);
             _clearScoreText.text = "スコア：" + _score.ToString("F0");
-            //_timerText.text = "撃破時間：" + _timer.ToString("F2");
+            _timerText.text = "撃破時間：" + _timer.ToString("F2");
             _gameClearPnanel.GetComponent<RectTransform>().DOAnchorPosY(0f, 2f).SetEase(Ease.OutQuart).SetLink(gameObject);
         }
     }

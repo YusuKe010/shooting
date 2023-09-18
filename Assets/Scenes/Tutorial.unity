@@ -206,6 +206,10 @@ PrefabInstance:
       propertyPath: _powerText
       value: 
       objectReference: {fileID: 1996808921}
+    - target: {fileID: 5444721406546585752, guid: e65d04bbf81b80343910493057d15a2a, type: 3}
+      propertyPath: _isCollision
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e65d04bbf81b80343910493057d15a2a, type: 3}
 --- !u!114 &468158956 stripped
@@ -648,6 +652,10 @@ PrefabInstance:
       objectReference: {fileID: 154265345}
     - target: {fileID: 7893322809462373573, guid: 85242b4a94be2884191031674a419837, type: 3}
       propertyPath: _panel
+      value: 
+      objectReference: {fileID: 1186929812}
+    - target: {fileID: 7893322809462373573, guid: 85242b4a94be2884191031674a419837, type: 3}
+      propertyPath: _fadepanel
       value: 
       objectReference: {fileID: 1186929812}
     - target: {fileID: 7893322809462373573, guid: 85242b4a94be2884191031674a419837, type: 3}
