@@ -103,14 +103,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneChanger: {fileID: 7893322809462373573, guid: 85242b4a94be2884191031674a419837, type: 3}
-  m_moveSpeed: 5
-  m_bulletPrefab: {fileID: 299307991951753039, guid: 1c6b9d20110444745974cb728d9de7dc, type: 3}
-  _bombPrefab: {fileID: 5378972260754504820, guid: 5bb4a3dc06055ab40a75c4b2026fec64, type: 3}
-  m_muzzle: {fileID: 5444721406853595639}
-  _Player: {fileID: 5444721406546585734}
-  m_bulletLimit: 0.1
+  _moveSpeed: 5
   _powerText: {fileID: 0}
-  _bulletPower: 5
+  _bulletPrefab: {fileID: 299307991951753039, guid: 1c6b9d20110444745974cb728d9de7dc, type: 3}
+  _muzzle: {fileID: 5444721406853595639}
+  _bulletPrefab2: {fileID: 3445966363196084647, guid: a00ed23c3f9a8494ea5f1b0cdc1d4a6d, type: 3}
+  _muzzle2:
+  - {fileID: 7931280572304289969}
+  - {fileID: 6660697863948843561}
+  _bulletPower: 50
+  _bombPrefab: {fileID: 5378972260754504820, guid: 5bb4a3dc06055ab40a75c4b2026fec64, type: 3}
   _bombText: {fileID: 0}
   _lifeText: {fileID: 0}
   _life: 3
@@ -207,7 +209,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8028631290249151387}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -3, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -238,7 +240,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8766120388909094552}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 3, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

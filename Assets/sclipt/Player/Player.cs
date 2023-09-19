@@ -11,24 +11,29 @@ public class Player : MonoBehaviour
 {
     [SerializeField] SceneChanger _sceneChanger;
 
-    [SerializeField] float m_moveSpeed = 5f;
-    [SerializeField] GameObject m_bulletPrefab = null;
-    [SerializeField] GameObject _bombPrefab;
-    [SerializeField] Transform m_muzzle = null;
-    [SerializeField] Transform _Player;
-    [SerializeField, Range(0, 1f)] float m_bulletLimit = 0;
-    Rigidbody2D m_rb;
+
+    //プレイヤー
+    Rigidbody2D _rb;
+    [SerializeField] float _moveSpeed = 5f;
+    float[] _bulletTimer = { 0, 0 };
+    float[] _bulletLimit = { 0.15f, 1f };
+    float _maxPlayerPower = 5.0f;
+    float _playerPower = 1.0f;
     [SerializeField] Text _powerText;
 
-    //プレイヤーの強さ
-
+    //プレイヤーの弾
+    [SerializeField] GameObject _bulletPrefab = null;
+    [SerializeField] Transform _muzzle = null;
+    [SerializeField] GameObject _bulletPrefab2 = null;
+    [SerializeField] Transform[] _muzzle2 = null;
 
     //弾の威力
-    [SerializeField] float _bulletPower = 1f;
-    public float BulletDamage => _bulletPower;
+    [SerializeField] int _bulletPower = 100;
+    public int BulletDamage => _bulletPower;
 
 
-    //ボム表示
+    //ボム
+    [SerializeField] GameObject _bombPrefab;
     [SerializeField] Text _bombText;
     int _bomb = 3;
 
@@ -37,14 +42,12 @@ public class Player : MonoBehaviour
     [SerializeField] int _life = 3;
 
     //無敵モード
-    [SerializeField] bool _isCollision = true;
+    [SerializeField] bool _invincibility = true;
 
-     float _Timer;
 
     void Start()
     {
-        m_rb = GetComponent<Rigidbody2D>();
-        _bulletPower = 1f;
+        _rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -55,66 +58,99 @@ public class Player : MonoBehaviour
             float h = Input.GetAxisRaw("Horizontal");
             float v = Input.GetAxisRaw("Vertical");
             Vector2 dir = new Vector2(h, v).normalized;
-            m_rb.velocity = dir * m_moveSpeed;
+            _rb.velocity = dir * _moveSpeed;
 
 
             if (Input.GetButton("Fire1"))
             {
-                if (_Timer > m_bulletLimit)
+                if (_bulletTimer[0] > _bulletLimit[0])
                 {
                     Fire1();
-                    _Timer = 0;
+                    _bulletTimer[0] = 0f;
                 }
                 else
                 {
-                    _Timer += Time.deltaTime;
+                    _bulletTimer[0] += Time.deltaTime;
+                }
+
+                if (_bulletTimer[1] > _bulletLimit[1] && _playerPower >= 3f)
+                {
+                    Fire2();
+                    _bulletTimer[1] = 0f;
+                }
+                else
+                {
+                    _bulletTimer[1] += Time.deltaTime;
                 }
             }
 
-            if(Input.GetMouseButtonDown(1) && _bomb != 0)
+            if (Input.GetMouseButtonDown(1) && _bomb != 0)
             {
-                Instantiate(_bombPrefab, m_muzzle.position, _bombPrefab.transform.rotation);
+                Instantiate(_bombPrefab, _muzzle.position, _bombPrefab.transform.rotation);
                 _bomb -= 1;
                 _bombText.text = "Spell:" + _bomb.ToString("d2");
             }
         }
         else
         {
-            m_rb.velocity = new Vector2 (0, 0);
+            _rb.velocity = new Vector2(0, 0);
+        }
+
+        
+        if (_playerPower >= 5)
+        {
+            _bulletLimit[1] = 0.5f;
+        }
+        else if (_playerPower >= 4)
+        {
+            _bulletLimit[1] = 0.75f;
+        }
+        else if (_playerPower >= 2f)
+        {
+            _bulletLimit[0] = 0.15f;
         }
 
 
-         if(_life <=0)
+        if (_life <= 0)
         {
             SceneManager.LoadScene("Title");
         }
     }
     void Fire1()
     {
-        if (m_bulletPrefab && m_muzzle) // m_bulletPrefab にプレハブが設定されている時 かつ m_muzzle に弾の発射位置が設定されている時
+        if (_bulletPrefab && _muzzle) // m_bulletPrefab にプレハブが設定されている時 かつ m_muzzle に弾の発射位置が設定されている時
         {
-            GameObject go = Instantiate(m_bulletPrefab, m_muzzle.position, m_bulletPrefab.transform.rotation);  // インスペクターから設定した m_bulletPrefab をインスタンス化する
+            GameObject go = Instantiate(_bulletPrefab, _muzzle.position, _bulletPrefab.transform.rotation);  // インスペクターから設定した m_bulletPrefab をインスタンス化する
             go.transform.SetParent(this.transform);
         }
+    }
+
+    void Fire2()
+    {
+        foreach (Transform muzzle in _muzzle2)
+        {
+            Instantiate(_bulletPrefab2, muzzle.position, _bulletPrefab2.transform.rotation);
+        }
+
     }
 
     /// <summary>/// プレーヤーのパワーアップ /// </summary>
     public void PowerUp(float powerUp)
     {
-        if (_bulletPower >= 5f)
+        if (_playerPower >= _maxPlayerPower)
         {
-            _bulletPower = 5f;
-            _powerText.text = "Power:" + _bulletPower.ToString("f2");
+            _playerPower = _maxPlayerPower;
+            _powerText.text = "Power:" + _maxPlayerPower.ToString("f2");
         }
         else
         {
-            _bulletPower += powerUp;
-            _powerText.text = "Power:" + _bulletPower.ToString("f2");
+            _playerPower += powerUp;
+            _powerText.text = "Power:" + _playerPower.ToString("f2");
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Bullet") && !_isCollision)
+        if (collision.gameObject.CompareTag("Bullet") && !_invincibility)
         {
             _life -= 1;
             _lifeText.text = "Player:" + _life.ToString("d2");

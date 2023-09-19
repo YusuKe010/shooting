@@ -15,7 +15,7 @@ public class PlayerBullet : MonoBehaviour
     [SerializeField] float m_bulletSpeed = 10f;
     Rigidbody2D m_rb;
 
-    [SerializeField] int _bulletDamage = 200;
+    [SerializeField] Player _player;
 
     void Start()
     {
@@ -28,8 +28,8 @@ public class PlayerBullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Boss"))
         {
-            Boss._instance.WeponHit(_bulletDamage);
-            ScoreManager._instance.ScoreUp(_bulletDamage);
+            Boss._instance.WeponHit(_player.BulletDamage);
+            ScoreManager._instance.ScoreUp(_player.BulletDamage);
             Destroy(this.gameObject);
         }
         

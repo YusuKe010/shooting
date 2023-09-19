@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerBullet2 : MonoBehaviour
 {
+    [SerializeField] Player _player;
     [SerializeField] float _bulletSpeed = 5f;
 
     void Start()
@@ -23,8 +24,8 @@ public class PlayerBullet2 : MonoBehaviour
     {
         if (collision.CompareTag("Boss"))
         {
-            Boss._instance.WeponHit(100);
-            ScoreManager._instance.ScoreUp(100);
+            Boss._instance.WeponHit(_player.BulletDamage);
+            ScoreManager._instance.ScoreUp(_player.BulletDamage);
             Destroy(this.gameObject);
         }
     }

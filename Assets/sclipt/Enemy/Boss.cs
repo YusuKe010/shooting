@@ -42,7 +42,11 @@ public class Boss : MonoBehaviour
         {
             if(GameManager._instance.Wave > 1 )
             {
-                Instantiate(_powerUpItem, _muzle.position, _powerUpItem.transform.rotation);
+                for(int i = 0; i < 10; i++)
+                {
+                    Vector2 v = new Vector2(gameObject.transform.position.x + Random.Range(-3, 3), gameObject.transform.position.y + Random.Range(-5, 5));
+                    Instantiate(_powerUpItem, v, _powerUpItem.transform.rotation);
+                }
             }
             _bossHp = _maxBossHp;
             _saveWave++;
@@ -86,7 +90,7 @@ public class Boss : MonoBehaviour
     }
 
     /// <summary>///ボスが受けるダメージ /// </summary>
-    public void WeponHit(float Damage)
+    public void WeponHit(int Damage)
     {
         Scrollbar scrollbar = _hpBer;
         _bossHp -= Damage;
