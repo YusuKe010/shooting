@@ -48,9 +48,9 @@ public class Boss : MonoBehaviour
         {
             if(GameManager._instance.Wave > 1 )
             {
-                for(int i = 0; i < 10; i++)
+                for(int i = 0; i < 15; i++)
                 {
-                    Vector2 v = new Vector2(gameObject.transform.position.x + Random.Range(-5f, 5f), gameObject.transform.position.y + Random.Range(-5f, 5f));
+                    Vector2 v = new Vector2(gameObject.transform.position.x + Random.Range(-6f, 6f), gameObject.transform.position.y + Random.Range(-6f, 6f));
                     Instantiate(_powerUpItem, v, _powerUpItem.transform.rotation);
                 }
             }

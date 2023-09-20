@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     Rigidbody2D _rb;
     [SerializeField] float _moveSpeed = 5f;
     float[] _bulletTimer = { 0, 0 };
+
+    //ÉvÉåÉCÉÑÅ[ÇÃã≠Ç≥
     float[] _bulletLimit = { 0.15f, 1f };
     float _maxPlayerPower = 5.0f;
     float _playerPower = 1.0f;
@@ -154,6 +156,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet") && !_invincibility)
         {
             _life -= 1;
+            _playerPower -= 0.5f;
             _lifeText.text = "Player:" + _life.ToString("d2");
             GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
             foreach (GameObject bullet in bullets)
