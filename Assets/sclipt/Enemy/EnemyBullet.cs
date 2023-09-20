@@ -5,15 +5,16 @@ using UnityEngine;
 public class EnemyBullet : MonoBehaviour
 {
     //-------‘S•ûˆÊ’e---------------------
+    [SerializeField] EnemyShot1 _enemyShot;
+
     public float angle = 90;
-    [SerializeField] float _speed = -5f;
     Vector3 velocity;
     // Start is called before the first frame update
     void Start()
     {
         //ƒxƒNƒgƒ‹ŒvŽZ
-        velocity.x = _speed * Mathf.Cos(angle * Mathf.Deg2Rad);
-        velocity.y = _speed * Mathf.Sin(angle * Mathf.Deg2Rad);
+        velocity.x = _enemyShot.BulletSpeed * Mathf.Cos(angle * Mathf.Deg2Rad);
+        velocity.y = _enemyShot.BulletSpeed * Mathf.Sin(angle * Mathf.Deg2Rad);
         //Šp“xŒvŽZ
         float zAngle = Mathf.Atan2(velocity.y,velocity.x) * Mathf.Rad2Deg - 90.0f;
         transform.rotation = Quaternion.Euler(0,0,zAngle);

@@ -7,6 +7,7 @@ public class Boss : MonoBehaviour
 {
     public static Boss _instance;
 
+    Animator animator;
     EnemyShot1 enemyShot1;
     EnemyShot2 enemyShot2;
     EnemyShot3 enemyShot3;
@@ -21,6 +22,8 @@ public class Boss : MonoBehaviour
     public float BossHp => _bossHp;
     int _saveWave;
 
+    [SerializeField] int _waveCount;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -29,10 +32,13 @@ public class Boss : MonoBehaviour
     void Start()
     {
         _maxBossHp = _bossHp;
+        animator = GetComponent<Animator>();
         enemyShot1 = GetComponent<EnemyShot1>();
         enemyShot2 = GetComponent<EnemyShot2>();
         enemyShot3 = GetComponent<EnemyShot3>();
         enemyShot4 = GetComponent<EnemyShot4>();
+
+        animator.enabled = false;
     }
 
     // Update is called once per frame
@@ -44,48 +50,55 @@ public class Boss : MonoBehaviour
             {
                 for(int i = 0; i < 10; i++)
                 {
-                    Vector2 v = new Vector2(gameObject.transform.position.x + Random.Range(-5, 5), gameObject.transform.position.y + Random.Range(-5, 5));
+                    Vector2 v = new Vector2(gameObject.transform.position.x + Random.Range(-5f, 5f), gameObject.transform.position.y + Random.Range(-5f, 5f));
                     Instantiate(_powerUpItem, v, _powerUpItem.transform.rotation);
                 }
             }
+            animator.enabled = true;
             _bossHp = _maxBossHp;
             _saveWave++;
+            _waveCount = Random.Range(1, 5);
         }
 
-        if (GameManager._instance.Wave == 1)
+        if (_waveCount ==1)
         {
             enemyShot1.enabled = true;
             enemyShot2.enabled = false;
             enemyShot3.enabled = false;
             enemyShot4.enabled = true;
         }
-        else if (GameManager._instance.Wave == 2)
+        else if ( _waveCount == 2)
         {
             enemyShot1.enabled = false;
             enemyShot2.enabled = true;
             enemyShot3.enabled = true;
             enemyShot4.enabled = false;
         }
-        else if (GameManager._instance.Wave == 3)
+        else if (_waveCount == 3)
         {
             enemyShot1.enabled = false;
             enemyShot2.enabled = false;
             enemyShot3.enabled = true;
             enemyShot4.enabled = true;
         }
-        else if (GameManager._instance.Wave == 4)
+        else if (_waveCount == 4)
         {
             enemyShot1.enabled = true;
             enemyShot2.enabled = true;
             enemyShot3.enabled = false;
             enemyShot4.enabled = false;
         }
-        else
+        if(GameManager._instance.Wave >= 5)
+        {
+            gameObject.SetActive(false);
+        }
+        if(Player._instance.Life <= 0)
         {
             enemyShot1.enabled = false;
             enemyShot2.enabled = false;
             enemyShot3.enabled = false;
             enemyShot4.enabled = false;
+            animator.enabled = false;
         }
     }
 

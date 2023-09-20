@@ -80,11 +80,13 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if(_player.Life <= 0)
+        if(Player._instance.Life <= 0)
         {
+            DOTween.SetTweensCapacity(1500, 200);
             _gameOverPanel.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -500);
             _gameOverPanel.SetActive(true);
-            _gameOverPanel.GetComponent<RectTransform>().DOAnchorPosY(0, 2f);
+            _gameOverPanel.GetComponent<RectTransform>().DOAnchorPosY(0, 2f).SetLink(gameObject);
+            _wave = 0;
         }
     }
 
@@ -94,5 +96,4 @@ public class GameManager : MonoBehaviour
         GameManager gameManager = FindAnyObjectByType<GameManager>();
         gameManager._isStart = true;
     }
-
 }

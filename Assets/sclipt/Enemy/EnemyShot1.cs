@@ -8,10 +8,12 @@ public class EnemyShot1 : MonoBehaviour
     [SerializeField] Transform m_muzzle = null;
     [SerializeField] EnemyBullet m_bullet;
 
-    [SerializeField, Header("ˆê‰ò‚Ì’e‚Ìo‚éŠÔŠuAŽŸ‚Ì‰ò‚ªo‚éŠÔŠu")] float[] _timer;
+     float[] _timer = { 0, 0 };
     [SerializeField, Header("ŽŸ‚Éo‚é’e‚ÌŠp“x")] float _Angle;
     [SerializeField, Header("ˆê‰ñ‚Éo‚é’e‚ÌŠÔŠu")] int[] _angle;
-    // Start is called before the first frame update
+
+    [SerializeField] float _speed = 7f;
+    public float BulletSpeed => _speed;
     void Start()
     {
         m_bullet.angle = 0;

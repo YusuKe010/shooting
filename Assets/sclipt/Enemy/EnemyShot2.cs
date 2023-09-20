@@ -7,6 +7,8 @@ public class EnemyShot2 : MonoBehaviour
     [SerializeField] GameObject m_bulletPrefab = null;
     [SerializeField] Transform[] m_muzzle = null;
     [SerializeField] float[] _Timer;
+    [SerializeField] float _speed = 5f;
+    public float BulletSpeed => _speed;
     // Start is called before the first frame update
     void Start()
     {

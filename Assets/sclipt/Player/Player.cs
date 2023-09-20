@@ -9,6 +9,8 @@ using Unity.VisualScripting;
 [RequireComponent(typeof(Rigidbody2D))] // Rigidbody コンポーネントのアタッチを強制する
 public class Player : MonoBehaviour
 {
+    public static Player _instance;
+
     [SerializeField] SceneChanger _sceneChanger;
 
 
@@ -45,6 +47,10 @@ public class Player : MonoBehaviour
     //無敵モード
     [SerializeField] bool _invincibility = true;
 
+    private void Awake()
+    {
+        _instance = this;
+    }
 
     void Start()
     {
@@ -109,12 +115,6 @@ public class Player : MonoBehaviour
         else if (_playerPower >= 2f)
         {
             _bulletLimit[0] = 0.15f;
-        }
-
-
-        if (_life <= 0)
-        {
-            SceneManager.LoadScene("Title");
         }
     }
     void Fire1()

@@ -5,13 +5,12 @@ using UnityEngine;
 public class EnemyBullet2 : MonoBehaviour
 {
     //-------ホーミング弾-----------------
-    [SerializeField] float m_speed = 1f;
+    [SerializeField] EnemyShot2 _enemyshot2;
 
     void Start()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        Vector2 v = player.transform.position - this.transform.position;
-        v = v.normalized * m_speed;
+        Vector2 v = (player.transform.position - this.transform.position).normalized * _enemyshot2.BulletSpeed;
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         rb.velocity = v;
     }

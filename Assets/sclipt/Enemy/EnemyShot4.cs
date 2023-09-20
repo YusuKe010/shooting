@@ -7,8 +7,12 @@ public class EnemyShot4 : MonoBehaviour
     [SerializeField] GameObject _bulletPrefab = null;
     [SerializeField] Transform _muzzle = null;
     [SerializeField] EnemyBullet4 _bullet;
+    [SerializeField] float _speed = 5f;
+    public float BulletSpeed => _speed;
     [SerializeField] float[] _timer;
     [SerializeField] int _angle;
+
+    [SerializeField, Header("1/0:‰½ŒÂo‚·‚©2:‰½•bŠÔ‚ğŠJ‚¯‚é‚©")] float[] _bulletLimit = { 0.5f, 2.1f, 4f };
     void Start()
     {
 
@@ -18,22 +22,18 @@ public class EnemyShot4 : MonoBehaviour
     void Update()
     {
         _timer[1] += Time.deltaTime;
-        if (_timer[1] < 2.1f)
+        if (_timer[1] < _bulletLimit[1])
         {
-            if (_timer[0] > 0.5f)
+            if (_timer[0] > _bulletLimit[0])
             {
                 Fir4();
                 _timer[0] = 0;
             }
             else
-            {
                 _timer[0] += Time.deltaTime;
-            }
         }
-        else if (_timer[1] > 4.0f)
-        {
+        else if (_timer[1] > _bulletLimit[2])
             _timer[1] = 0;
-        }
     }
     void Fir4()
     {

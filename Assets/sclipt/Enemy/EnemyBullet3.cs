@@ -12,23 +12,21 @@ public class EnemyBullet3 : MonoBehaviour
     // ‰~‰^“®üŠú
     [SerializeField] float _period = 2;
     [SerializeField] float _DownSpeed = -2.0f;
+
+
+    private void Start()
+    {
+        Destroy(gameObject, 10f);
+    }
     private void Update()
     {
         // ’†S“_center‚Ìü‚è‚ğA²axis‚ÅAperiodüŠú‚Å‰~‰^“®
         transform.RotateAround(_center,_axis,360 / _period * Time.deltaTime);
         transform.Translate(0f,_DownSpeed,0.0f);
-        Destroy(gameObject,12.0f);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Bomb"))
-        {
-            Destroy(gameObject);
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.tag == "Out")
         {
             Destroy(gameObject);
         }
