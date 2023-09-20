@@ -44,7 +44,7 @@ public class Boss : MonoBehaviour
             {
                 for(int i = 0; i < 10; i++)
                 {
-                    Vector2 v = new Vector2(gameObject.transform.position.x + Random.Range(-3, 3), gameObject.transform.position.y + Random.Range(-5, 5));
+                    Vector2 v = new Vector2(gameObject.transform.position.x + Random.Range(-5, 5), gameObject.transform.position.y + Random.Range(-5, 5));
                     Instantiate(_powerUpItem, v, _powerUpItem.transform.rotation);
                 }
             }

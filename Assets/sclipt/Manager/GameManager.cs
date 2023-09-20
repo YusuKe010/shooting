@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField,Header("0:プレイヤー弾の威力")] Text _text; //自機の強さを表示する
 
     [SerializeField] GameObject _startPanel; //操作説明パネル
+    [SerializeField] GameObject _gameOverPanel; //ゲームオーバー画面
 
     //フェードパネル
     [SerializeField] GameObject _fadePanel;
@@ -25,7 +26,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] int _wave;
     public int Wave => _wave;
 
-    //[SerializeField] float _saveBulletDamage;
 
     private void Awake()
     {
@@ -37,7 +37,9 @@ public class GameManager : MonoBehaviour
         _wave = 0;
         _startPanel.SetActive(true);
         _fadePanel.SetActive(true);
+        _gameOverPanel.SetActive(false);
         _fadeCanvasGroup.alpha = 1.0f;
+        //フェードアウトのあと、操作パネルを出す
         _fadeCanvasGroup.DOFade(0f,1.5f).SetEase(Ease.InQuad) .OnComplete(() => 
         {
             _fadePanel.SetActive(false);
@@ -76,6 +78,13 @@ public class GameManager : MonoBehaviour
             {
                 Destroy(a);
             }
+        }
+
+        if(_player.Life <= 0)
+        {
+            _gameOverPanel.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -500);
+            _gameOverPanel.SetActive(true);
+            _gameOverPanel.GetComponent<RectTransform>().DOAnchorPosY(0, 2f);
         }
     }
 

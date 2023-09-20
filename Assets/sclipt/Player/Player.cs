@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
     //残機表示
     [SerializeField] Text _lifeText;
     [SerializeField] int _life = 3;
+    public int Life => _life;
 
     //無敵モード
     [SerializeField] bool _invincibility = true;
