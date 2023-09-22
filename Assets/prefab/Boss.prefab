@@ -208,8 +208,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 1569228678, guid: 044a4b89ca47e3b42a62e26bd2095be9, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -253,9 +253,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hpBer: {fileID: 0}
-  _powerUpItem: {fileID: 8318724929756420533, guid: 1fd1c4d4449a4b5468d94421f54d20c7, type: 3}
+  _powerUpItem: {fileID: 1361449951712423163, guid: 105c074e185bbc2429bd6953d878066b, type: 3}
   _muzle: {fileID: 4294717744379401214}
   _bossHp: 5000
+  _waveCount: 0
 --- !u!114 &-5023425546504488184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,11 +272,13 @@ MonoBehaviour:
   m_bulletPrefab: {fileID: 2687508797662752034, guid: 838aedd2aba0dc54a8739b0838ba7e9b, type: 3}
   m_muzzle: {fileID: 4294717744379401214}
   m_bullet: {fileID: -5640094370988351677, guid: 838aedd2aba0dc54a8739b0838ba7e9b, type: 3}
-  _timer:
-  - 0
-  - 0
   _Angle: 3
   _angle: 240000000a000000
+  _bulletLimit:
+  - 2.1
+  - 0.5
+  - 4
+  _speed: 7
 --- !u!114 &2229694195071063404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,9 +296,14 @@ MonoBehaviour:
   - {fileID: 4294717744238005967}
   - {fileID: 4294717744648037970}
   - {fileID: 4294717743416284342}
+  _bulletLimit:
+  - 2.2
+  - 0.7
+  - 4
   _Timer:
   - 0
   - 0
+  _speed: 5
 --- !u!114 &4294717745029689472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,6 +319,7 @@ MonoBehaviour:
   m_bulletPrefab: {fileID: 536085081614336401, guid: 5cfc792e49d8d8949ae9ae5ce82f71b3, type: 3}
   m_muzzle: {fileID: 4294717744379401214}
   m_bullet3: {fileID: 3754362020903805754, guid: 5cfc792e49d8d8949ae9ae5ce82f71b3, type: 3}
+  _bulletLimit: []
   _Timer:
   - 0.8
   - 0
@@ -329,6 +338,7 @@ MonoBehaviour:
   _bulletPrefab: {fileID: 5600523480630882069, guid: 5d2ce3a805619e24c9f7dd69b22d5750, type: 3}
   _muzzle: {fileID: 4294717744379401214}
   _bullet: {fileID: 1894288978680184521, guid: 5d2ce3a805619e24c9f7dd69b22d5750, type: 3}
+  _speed: 5
   _timer:
   - 0
   - 0
@@ -350,6 +360,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 1}
-  m_Direction: 0
+  m_Offset: {x: 0.23, y: -0.96}
+  m_Size: {x: 4.52, y: 1.12}
+  m_Direction: 1

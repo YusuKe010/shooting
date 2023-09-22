@@ -12,6 +12,7 @@ public class EnemyShot1 : MonoBehaviour
     [SerializeField, Header("ŽŸ‚Éo‚é’e‚ÌŠp“x")] float _Angle;
     [SerializeField, Header("ˆê‰ñ‚Éo‚é’e‚ÌŠÔŠu")] int[] _angle;
 
+    [SerializeField] float[] _bulletLimit = {2.1f, 0.5f, 4f};
     [SerializeField] float _speed = 7f;
     public float BulletSpeed => _speed;
     void Start()
@@ -24,9 +25,9 @@ public class EnemyShot1 : MonoBehaviour
     {
         //--------‘S•ûˆÊ’e--------------------------------
         _timer[1] += Time.deltaTime;
-        if (_timer[1] < 2.1f)
+        if (_timer[1] < _bulletLimit[0])
         {
-            if (_timer[0] > 0.5f)
+            if (_timer[0] > _bulletLimit[1])
             {
                 for (int i = 0; i < _angle[0]; i++)
                 {
@@ -41,7 +42,7 @@ public class EnemyShot1 : MonoBehaviour
                 _timer[0] += Time.deltaTime;
             }
         }
-        else if (_timer[1] > 4.0f)
+        else if (_timer[1] > _bulletLimit[2])
         {
             _timer[1] = 0;
         }

@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyShot2 : MonoBehaviour
 {
     [SerializeField] GameObject m_bulletPrefab = null;
     [SerializeField] Transform[] m_muzzle = null;
+    [SerializeField] float[] _bulletLimit = { 2.2f, 0.7f, 4f};
     [SerializeField] float[] _Timer;
     [SerializeField] float _speed = 5f;
     public float BulletSpeed => _speed;
@@ -20,9 +22,9 @@ public class EnemyShot2 : MonoBehaviour
     {
         //------------ホーミング弾---------------------------------------------------------------------------------------
         _Timer[0] += Time.deltaTime;
-        if (_Timer[0] < 2.2f)
+        if (_Timer[0] < _bulletLimit[0])
         {
-            if (_Timer[1] > 0.7f)
+            if (_Timer[1] > _bulletLimit[1])
             {
                 Fire2();
                 _Timer[1] = 0;
@@ -32,7 +34,7 @@ public class EnemyShot2 : MonoBehaviour
                 _Timer[1] += Time.deltaTime;
             }
         }
-        else if (_Timer[0] > 4f)
+        else if (_Timer[0] > _bulletLimit[2])
         {
             _Timer[0] = 0;
         }

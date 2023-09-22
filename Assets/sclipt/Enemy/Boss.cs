@@ -88,6 +88,14 @@ public class Boss : MonoBehaviour
             enemyShot3.enabled = false;
             enemyShot4.enabled = false;
         }
+        else
+        {
+            enemyShot1.enabled = false;
+            enemyShot2.enabled = false;
+            enemyShot3.enabled = false;
+            enemyShot4.enabled = false;
+            animator.enabled = false;
+        }
         if(GameManager._instance.Wave >= 5)
         {
             gameObject.SetActive(false);
