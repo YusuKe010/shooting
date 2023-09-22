@@ -38,13 +38,14 @@ public class GameManager : MonoBehaviour
         _startPanel.SetActive(true);
         _fadePanel.SetActive(true);
         _gameOverPanel.SetActive(false);
+        _gameOverPanel.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -500);
         _fadeCanvasGroup.alpha = 1.0f;
         //フェードアウトのあと、操作パネルを出す
         _fadeCanvasGroup.DOFade(0f,1.5f).SetEase(Ease.InQuad) .OnComplete(() => 
         {
             _fadePanel.SetActive(false);
             _startPanel.GetComponent<RectTransform>().DOAnchorPosY(0f, 2f).SetEase(Ease.OutQuart);
-        });
+        }).SetLink(gameObject);
     }
 
     void Update()
@@ -82,8 +83,6 @@ public class GameManager : MonoBehaviour
 
         if(Player._instance.Life <= 0)
         {
-            DOTween.SetTweensCapacity(1500, 200);
-            _gameOverPanel.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -500);
             _gameOverPanel.SetActive(true);
             _gameOverPanel.GetComponent<RectTransform>().DOAnchorPosY(0, 2f).SetLink(gameObject);
             _wave = 0;

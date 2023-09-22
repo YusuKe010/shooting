@@ -6,9 +6,9 @@ public class EnemyBullet3 : MonoBehaviour
 {
     //-------------‘S•ûˆÊ‰ñ“]’e--------------------------------------
     // ’†S“_
-    [SerializeField] public Vector3 _center = Vector3.zero;
+     public Vector3 _center = Vector3.zero;
     // ‰ñ“]²
-    [SerializeField] public Vector3 _axis = Vector3.up;
+     public Vector3 _axis = Vector3.up;
     // ‰~‰^“®üŠú
     [SerializeField] float _period = 2;
     [SerializeField] float _DownSpeed = -2.0f;

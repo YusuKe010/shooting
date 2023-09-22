@@ -1,6 +1,4 @@
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -65,6 +63,6 @@ public class ScoreManager : MonoBehaviour
         {
             tempScore = x;
             _scoreText.text = "Score:" + _score.ToString("d10");
-        }, _score, _scoreChangeInterval).OnComplete(() => _scoreText.text = "Score:" + _score.ToString("d10"));
+        }, _score, _scoreChangeInterval).OnComplete(() => _scoreText.text = "Score:" + _score.ToString("d10")).SetLink(gameObject) ;
     }
 }

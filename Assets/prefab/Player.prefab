@@ -116,7 +116,7 @@ MonoBehaviour:
   _bombText: {fileID: 0}
   _lifeText: {fileID: 0}
   _life: 3
-  _invincibility: 1
+  _invincibility: 0
 --- !u!50 &5444721406546585753
 Rigidbody2D:
   serializedVersion: 4

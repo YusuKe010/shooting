@@ -1,10 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Experimental.GraphView.GraphView;
-using UnityEngine.SceneManagement;
-using Unity.VisualScripting;
 
 [RequireComponent(typeof(Rigidbody2D))] // Rigidbody コンポーネントのアタッチを強制する
 public class Player : MonoBehaviour
@@ -68,7 +63,6 @@ public class Player : MonoBehaviour
             float v = Input.GetAxisRaw("Vertical");
             Vector2 dir = new Vector2(h, v).normalized;
             _rb.velocity = dir * _moveSpeed;
-
 
             if (Input.GetButton("Fire1"))
             {

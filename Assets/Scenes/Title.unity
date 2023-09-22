@@ -652,7 +652,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1148767572}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.08832, y: -11.8195305, z: -11.029741}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -838,6 +838,10 @@ PrefabInstance:
     - target: {fileID: 3082719912862857421, guid: 7e97880c95c25f24c9f381a88c53b5d2, type: 3}
       propertyPath: m_Name
       value: HardPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3082719912862857421, guid: 7e97880c95c25f24c9f381a88c53b5d2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3082719912862857422, guid: 7e97880c95c25f24c9f381a88c53b5d2, type: 3}
       propertyPath: m_Pivot.x
@@ -1066,7 +1070,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8088768175912564305, guid: b67734e16b1b9d54fbb99f57aecc4be5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8088768176384924835, guid: b67734e16b1b9d54fbb99f57aecc4be5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
