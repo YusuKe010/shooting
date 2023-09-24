@@ -13,21 +13,23 @@ public class SceneChanger : MonoBehaviour
 
     public void SceneChange(string sceneName)
     {
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.Play();
         StartCoroutine(Fade(sceneName));
     }
 
     //パネル消す(左矢印用)
     public void LeftPanelDelete(GameObject nowPanel)
     {
-        nowPanel.GetComponent<RectTransform>().DOAnchorPosX(-800, 1.7f).OnComplete(() => nowPanel.SetActive(false)).SetLink(gameObject);
+            nowPanel.GetComponent<RectTransform>().DOAnchorPosX(-800, 1.7f).OnComplete(() => nowPanel.SetActive(false)).SetLink(gameObject);
     }
 
     //パネル出す(左矢印用)
     public void LeftPanel(GameObject panel)
     {
-        panel.GetComponent<RectTransform>().anchoredPosition = new Vector2(800, 0);
-        panel.SetActive(true);
-        panel.GetComponent<RectTransform>().DOAnchorPosX(0, 1.7f).SetLink(gameObject);
+            panel.GetComponent<RectTransform>().anchoredPosition = new Vector2(800, 0);
+            panel.SetActive(true);
+            panel.GetComponent<RectTransform>().DOAnchorPosX(0, 1.7f).SetLink(gameObject);
     }
 
     //パネル消す(右矢印用)
