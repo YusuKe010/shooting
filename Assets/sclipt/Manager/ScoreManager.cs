@@ -17,7 +17,6 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] GameObject _gameClearPnanel;
     [SerializeField] Text _clearScoreText;
     [SerializeField] Text _timerText;
-    [SerializeField] 
 
     private void Awake()
     {
@@ -40,11 +39,11 @@ public class ScoreManager : MonoBehaviour
             _timer += Time.deltaTime;
 
         }
-        if (GameManager._instance.Wave >= 5)
+        else if (GameManager._instance.Wave == 5)
         {
             _gameClearPnanel.SetActive(true);
-            _clearScoreText.text = "スコア：" + _score.ToString("F0");
-            _timerText.text = "撃破時間：" + _timer.ToString("F2");
+            _clearScoreText.text = $"スコア：{_score.ToString("f0")}";
+            _timerText.text = $"撃破時間:{_timer.ToString("f2")}秒";
             _gameClearPnanel.GetComponent<RectTransform>().DOAnchorPosY(0f, 2f).SetEase(Ease.OutQuart).SetLink(gameObject);
         }
     }
@@ -58,11 +57,11 @@ public class ScoreManager : MonoBehaviour
         int tempScore = _score;
         Text scoreText = _scoreText;
         _score += upScore;
-        //scoreText.text = "Score:" + _score.ToString("0000000000");
-        DOTween.To(() => tempScore, x =>
-        {
-            tempScore = x;
-            _scoreText.text = "Score:" + _score.ToString("d10");
-        }, _score, _scoreChangeInterval).OnComplete(() => _scoreText.text = "Score:" + _score.ToString("d10")).SetLink(gameObject) ;
+        scoreText.text = "Score:" + _score.ToString("0000000000");
+        //DOTween.To(() => tempScore, x =>
+        //{
+        //    tempScore = x;
+        //    _scoreText.text = "Score:" + _score.ToString("d10");
+        //}, _score, _scoreChangeInterval).OnComplete(() => _scoreText.text = "Score:" + _score.ToString("d10")).SetLink(gameObject) ;
     }
 }

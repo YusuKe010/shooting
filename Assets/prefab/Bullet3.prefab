@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f68ae8ffdccc0034f9777236e540776b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _center: {x: -6.520578, y: 6.130328, z: 0}
-  _axis: {x: -0, y: -0, z: -2}
+  _center: {x: -7.701601, y: 6.0643854, z: 0}
+  _axis: {x: -0, y: -0, z: 2}
   _period: 5
-  _DownSpeed: 0.005
+  _DownSpeed: 0.003
