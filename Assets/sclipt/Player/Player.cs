@@ -44,6 +44,9 @@ public class Player : MonoBehaviour
     //無敵モード
     [SerializeField] bool _invincibility = true;
 
+    //エフェクト
+    [SerializeField] GameObject _effct;
+
     private void Awake()
     {
         _instance = this;
@@ -89,7 +92,8 @@ public class Player : MonoBehaviour
 
             if (Input.GetMouseButtonDown(1) && _bomb != 0)
             {
-                Instantiate(_bombPrefab, _muzzle.position, _bombPrefab.transform.rotation);
+                GameObject bomb = Instantiate(_bombPrefab, _muzzle.position, _bombPrefab.transform.rotation);
+                Destroy(bomb, 3f);
                 _bomb -= 1;
                 _bombText.text = "Spell:" + _bomb.ToString("d2");
             }
@@ -118,7 +122,6 @@ public class Player : MonoBehaviour
         if (_bulletPrefab && _muzzle) // m_bulletPrefab にプレハブが設定されている時 かつ m_muzzle に弾の発射位置が設定されている時
         {
             GameObject go = Instantiate(_bulletPrefab, _muzzle.position, _bulletPrefab.transform.rotation);  // インスペクターから設定した m_bulletPrefab をインスタンス化する
-            go.transform.SetParent(this.transform);
         }
     }
 
@@ -126,9 +129,8 @@ public class Player : MonoBehaviour
     {
         foreach (Transform muzzle in _muzzle2)
         {
-            Instantiate(_bulletPrefab2, muzzle.position, _bulletPrefab2.transform.rotation);
+            GameObject bullet2 = Instantiate(_bulletPrefab2, muzzle.position, _bulletPrefab2.transform.rotation);
         }
-
     }
 
     /// <summary>/// プレーヤーのパワーアップ /// </summary>
@@ -155,6 +157,8 @@ public class Player : MonoBehaviour
             GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
             foreach (GameObject bullet in bullets)
             {
+                GameObject effect = Instantiate(_effct, bullet.transform.position, bullet.transform.rotation);
+                Destroy(effect, 1f);
                 Destroy(bullet);
             }
         }

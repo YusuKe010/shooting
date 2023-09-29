@@ -13,18 +13,22 @@ public class Boss : MonoBehaviour
     EnemyShot3 enemyShot3;
     EnemyShot4 enemyShot4;
 
-    [SerializeField] Scrollbar _hpBer;
-    [SerializeField] GameObject _powerUpItem;
+    
+    
     [SerializeField] Transform _muzle;
 
+    //ボスのHP
     float _maxBossHp = 0;
+    [SerializeField] Scrollbar _hpBer;
     [SerializeField] public float _bossHp = 5000;
     public float BossHp => _bossHp;
     int _saveWave;
 
     [SerializeField] int _waveCount;
 
-    // Start is called before the first frame update
+    //ウェーブが進んだ時
+    [SerializeField] GameObject _effect;
+    [SerializeField] GameObject _powerUpItem;
     private void Awake()
     {
         _instance = this;

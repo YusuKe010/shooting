@@ -138,3 +138,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 5444721406546585752, guid: e65d04bbf81b80343910493057d15a2a, type: 3}
   _bulletSpeed: 10
+  _effct: {fileID: 3405993827493050752, guid: 3c395b1f1152f7a4e8e08b247d8d8681, type: 3}

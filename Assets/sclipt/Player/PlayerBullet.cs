@@ -17,6 +17,8 @@ public class PlayerBullet : MonoBehaviour
 
     [SerializeField] Player _player;
 
+    [SerializeField] GameObject _effect;
+
     void Start()
     {
         
@@ -30,6 +32,8 @@ public class PlayerBullet : MonoBehaviour
         {
             Boss._instance.WeponHit(_player.BulletDamage);
             ScoreManager._instance.ScoreUp(_player.BulletDamage);
+            GameObject effect = Instantiate(_effect, transform.position, transform.rotation);
+            Destroy(effect, 0.5f);
             Destroy(this.gameObject);
         }
         
