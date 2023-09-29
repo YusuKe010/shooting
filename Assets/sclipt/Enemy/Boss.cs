@@ -57,6 +57,8 @@ public class Boss : MonoBehaviour
                     Vector2 v = new Vector2(gameObject.transform.position.x + Random.Range(-6f, 6f), gameObject.transform.position.y + Random.Range(-6f, 6f));
                     Instantiate(_powerUpItem, v, _powerUpItem.transform.rotation);
                 }
+                GameObject effect = Instantiate(_effect, transform.position, transform.rotation);
+                Destroy(effect, 3f);
             }
             animator.enabled = true;
             _bossHp = _maxBossHp;
