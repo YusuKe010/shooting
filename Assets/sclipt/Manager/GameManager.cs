@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] int _wave;
     public int Wave => _wave;
 
+    //エフェクト
+    [SerializeField] GameObject _effect;
+
 
     private void Awake()
     {
@@ -74,6 +77,8 @@ public class GameManager : MonoBehaviour
 
         if(_wave >= 5)
         {
+            GameObject effect = Instantiate(_effect, transform.position, transform.rotation);
+            Destroy(effect, 3f);
             GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("PlayerBullet");
             foreach (GameObject a in gameObjects)
             {
