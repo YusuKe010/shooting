@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,6 +29,9 @@ public class GameManager : MonoBehaviour
 
     //エフェクト
     [SerializeField] GameObject _effect;
+    [SerializeField] GameObject _effect2;
+    bool _isEffect = true;
+    bool _isEffect2 = true;
 
 
     private void Awake()
@@ -77,8 +81,11 @@ public class GameManager : MonoBehaviour
 
         if(_wave >= 5)
         {
-            GameObject effect = Instantiate(_effect, transform.position, transform.rotation);
-            Destroy(effect, 3f);
+            if (_isEffect)
+            {
+                GameObject effect = Instantiate(_effect);
+                _isEffect = false;
+            }
             GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("PlayerBullet");
             foreach (GameObject a in gameObjects)
             {
@@ -86,11 +93,13 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if(Player._instance.Life <= 0)
+        if(Player._instance.Life <= 0 && _isEffect2)
         {
             _gameOverPanel.SetActive(true);
             _gameOverPanel.GetComponent<RectTransform>().DOAnchorPosY(0, 2f).SetLink(gameObject);
+            Instantiate(_effect2);
             _wave = 0;
+            _isEffect2 = false;
         }
     }
 

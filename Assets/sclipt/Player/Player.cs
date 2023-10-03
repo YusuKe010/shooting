@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Pool;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D))] // Rigidbody コンポーネントのアタッチを強制する
@@ -123,6 +124,7 @@ public class Player : MonoBehaviour
         {
             GameObject go = Instantiate(_bulletPrefab, _muzzle.position, _bulletPrefab.transform.rotation);  // インスペクターから設定した m_bulletPrefab をインスタンス化する
         }
+        
     }
 
     void Fire2()
