@@ -5,10 +5,4 @@ using UnityEngine;
 
 public class TestBullet : MonoBehaviour
 {
-    [SerializeField] ObjectPool _pool;
-
-    public void GetFromPool()
-    {
-        gameObject.SetActive(true);
-    }
 }
