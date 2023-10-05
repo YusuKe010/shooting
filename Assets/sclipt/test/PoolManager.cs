@@ -43,7 +43,7 @@ public class PoolManager : MonoBehaviour
 
         tmpBullet.gameObject.SetActive(true);
 
-        tmpBullet.ShowInStage(_pos);
+        //tmpBullet.ShowInStage(_pos);
 
         return tmpBullet;
     }
