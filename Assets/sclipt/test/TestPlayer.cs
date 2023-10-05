@@ -18,7 +18,7 @@ public class TestPlayer : MonoBehaviour
     private void Awake()
     {
          pool = new ObjectPool<GameObject>(
-         () => Instantiate(_bullet, _muzzle.position, _bullet.transform.rotation),
+         () => Instantiate(_bullet, _muzzle.position, _bullet.transform.rotation, transform),
          target => 
          {
              target.transform.position = _muzzle.position;

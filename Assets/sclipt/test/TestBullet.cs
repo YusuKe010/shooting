@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class TestBullet : MonoBehaviour
 {
-    [SerializeField] TestPlayer _player;
+    TestPlayer _player;
 
     private void Start()
     {
-        
+        _player = GetComponent<TestPlayer>();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
