@@ -118,6 +118,8 @@ public class Player : MonoBehaviour
             _bulletLimit[0] = 0.15f;
         }
     }
+
+
     void Fire1()
     {
         if (_bulletPrefab && _muzzle) // m_bulletPrefab にプレハブが設定されている時 かつ m_muzzle に弾の発射位置が設定されている時
