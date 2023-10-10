@@ -6,6 +6,8 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class TestPlayer : MonoBehaviour
 {
+    public static TestPlayer Instance;
+
     [SerializeField] GameObject _bullet = null;
     [SerializeField] Transform _muzzle = null;
     public ObjectPool<GameObject> pool;
@@ -17,6 +19,8 @@ public class TestPlayer : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
+
          pool = new ObjectPool<GameObject>(
          () => Instantiate(_bullet, _muzzle.position, _bullet.transform.rotation, transform),
          target => 
@@ -35,14 +39,9 @@ public class TestPlayer : MonoBehaviour
          100);
     }
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
-        if(_timer > _interval)
+        if (_timer > _interval)
         {
             var obj1 = pool.Get();
             _timer = 0;
@@ -52,4 +51,10 @@ public class TestPlayer : MonoBehaviour
             _timer += Time.deltaTime;
         }
     }
+
+    public GameObject CreateBullet(GameObject bullet, Transform muzzle)
+    {
+        return Instantiate(bullet, muzzle.position, bullet.transform.rotation);
+    }
+
 }

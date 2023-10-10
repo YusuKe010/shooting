@@ -11,13 +11,6 @@ public class EnemyShot2 : MonoBehaviour
     [SerializeField] float[] _Timer;
     [SerializeField] float _speed = 5f;
     public float BulletSpeed => _speed;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         //------------ホーミング弾---------------------------------------------------------------------------------------

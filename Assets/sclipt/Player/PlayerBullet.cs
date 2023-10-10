@@ -19,12 +19,23 @@ public class PlayerBullet : MonoBehaviour
 
     [SerializeField] GameObject _effect;
 
+    Vector3 v;
+
     void Start()
     {
-        
         m_rb = GetComponent<Rigidbody2D>();
-        Vector3 v = _direction.normalized * m_bulletSpeed; // 弾が飛ぶ速度ベクトルを計算する
+        v = _direction.normalized * m_bulletSpeed; // 弾が飛ぶ速度ベクトルを計算する
         m_rb.velocity = v;      // 速度ベクトルを弾にセットする
+    }
+
+    private void OnEnable()
+    {
+        m_rb.velocity = v;
+    }
+
+    private void OnDisable()
+    {
+        v = m_rb.velocity;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

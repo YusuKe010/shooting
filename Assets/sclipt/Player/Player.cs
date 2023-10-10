@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
     //ボム
     [SerializeField] GameObject _bombPrefab;
     [SerializeField] Text _bombText;
-    int _bomb = 3;
+    int _bombValue = 3;
 
     //残機表示
     [SerializeField] Text _lifeText;
@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
             {
                 if (_bulletTimer[0] > _bulletLimit[0])
                 {
-                    Fire1();
+                    Fire1(_bulletPrefab, _muzzle);
                     _bulletTimer[0] = 0f;
                 }
                 else
@@ -82,7 +82,7 @@ public class Player : MonoBehaviour
 
                 if (_bulletTimer[1] > _bulletLimit[1] && _playerPower >= 3f)
                 {
-                    Fire2();
+                    Fire2(_bulletPrefab2, _muzzle2);
                     _bulletTimer[1] = 0f;
                 }
                 else
@@ -91,12 +91,9 @@ public class Player : MonoBehaviour
                 }
             }
 
-            if (Input.GetMouseButtonDown(1) && _bomb != 0)
+            if (Input.GetMouseButtonDown(1) && _bombValue != 0)
             {
-                GameObject bomb = Instantiate(_bombPrefab, _muzzle.position, _bombPrefab.transform.rotation);
-                Destroy(bomb, 3f);
-                _bomb -= 1;
-                _bombText.text = "Spell:" + _bomb.ToString("d2");
+                Bomb(_bombPrefab, _muzzle,  _bombText, _bombValue);
             }
         }
         else
@@ -120,21 +117,25 @@ public class Player : MonoBehaviour
     }
 
 
-    void Fire1()
+    void Fire1(GameObject bulletPrefab, Transform muzzle)
     {
-        if (_bulletPrefab && _muzzle) // m_bulletPrefab にプレハブが設定されている時 かつ m_muzzle に弾の発射位置が設定されている時
-        {
-            GameObject go = Instantiate(_bulletPrefab, _muzzle.position, _bulletPrefab.transform.rotation);  // インスペクターから設定した m_bulletPrefab をインスタンス化する
-        }
-        
+        GameObject go = Instantiate(bulletPrefab, muzzle.position, bulletPrefab.transform.rotation);  // インスペクターから設定した m_bulletPrefab をインスタンス化する
     }
 
-    void Fire2()
+    void Fire2(GameObject bulletPrefab, Transform[] muzzles)
     {
-        foreach (Transform muzzle in _muzzle2)
+        foreach (Transform muzzle in muzzles)
         {
-            GameObject bullet2 = Instantiate(_bulletPrefab2, muzzle.position, _bulletPrefab2.transform.rotation);
+            GameObject bullet2 = Instantiate(bulletPrefab, muzzle.position, bulletPrefab.transform.rotation);
         }
+    }
+
+    void Bomb(GameObject bombPrefab, Transform muzzle, Text bombText, int bombValue)
+    {
+        GameObject bomb = Instantiate(bombPrefab, muzzle.position, bombPrefab.transform.rotation);
+        Destroy(bomb, 3f);
+        bombValue -= 1;
+        bombText.text = "Spell:" + bombValue.ToString("d2");
     }
 
     /// <summary>/// プレーヤーのパワーアップ /// </summary>
@@ -151,6 +152,7 @@ public class Player : MonoBehaviour
             _powerText.text = "Power:" + _playerPower.ToString("f2");
         }
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Bullet") && !_invincibility)

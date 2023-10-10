@@ -43,8 +43,5 @@ public class EnemyShot4 : MonoBehaviour
         GameObject go2 = Instantiate(_bulletPrefab, _muzzle.position, _bulletPrefab.transform.rotation);
         _bullet._plusDegree = -7;
         GameObject go3 = Instantiate(_bulletPrefab, _muzzle.position, _bulletPrefab.transform.rotation);
-        go.transform.position = this.transform.position;
-        go2.transform.position = this.transform.position;
-        go3.transform.position = this.transform.position;
     }
 }

@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    Rigidbody2D _rb;
     float _bulletSpeed = 5;
+    Vector3 v;
 
     void Start()
     {
+        _rb = GetComponent<Rigidbody2D>();
+        v = Vector3.up.normalized * _bulletSpeed;
+        _rb.velocity = v;
     }
 
-
-    void Update()
+    private void OnEnable()
     {
-        transform.position += transform.up * _bulletSpeed * Time.deltaTime;
+        _rb = GetComponent<Rigidbody2D>();
+        _rb.velocity = v;
     }
 }

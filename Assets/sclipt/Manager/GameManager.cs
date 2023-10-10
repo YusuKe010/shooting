@@ -5,8 +5,20 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
+enum WaveCounter
+{
+    gameStart,
+    wave1,
+    wave2,
+    wave3,
+    wave4,
+    gameEnd
+}
+
 public class GameManager : MonoBehaviour
 {
+    
+
     //他のスクリプトでメソッドを使うため
     public static GameManager _instance = null;
 
@@ -33,6 +45,8 @@ public class GameManager : MonoBehaviour
     bool _isEffect = true;
     bool _isEffect2 = true;
 
+    WaveCounter nowWave = 0;
+
 
     private void Awake()
     {
@@ -41,6 +55,7 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+        nowWave = WaveCounter.gameStart;
         _wave = 0;
         _startPanel.SetActive(true);
         _fadePanel.SetActive(true);
@@ -108,5 +123,15 @@ public class GameManager : MonoBehaviour
         panel.SetActive(false);
         GameManager gameManager = FindAnyObjectByType<GameManager>();
         gameManager._isStart = true;
+    }
+
+    void GameOver()
+    {
+
+    }
+
+    void GameClear()
+    {
+
     }
 }
